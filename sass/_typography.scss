@@ -1,0 +1,21 @@
+//===============================================================================
+// §TYPOGRAPHY
+//===============================================================================
+%type_body{
+  font-family: $body-font; 
+  font-size: 1.05em;
+  line-height: 1.4;
+}
+
+h1, h2, h3, h4, h5, p, ul, ol, blockquote{
+  margin-top: 0;
+}
+
+ol{
+  padding-left: 1em;
+}
+
+ul{
+  padding: 0;
+  list-style: none;
+}
