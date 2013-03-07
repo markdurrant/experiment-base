@@ -8,3 +8,6 @@
 # Sass stuff
 *.sassc
 .sass-cache
+
+# Notes
+notes.md
