@@ -383,105 +383,6 @@ table {
   border-spacing: 0;
 }
 
-/* line 4, ../sass/_typography.scss */
-body {
-  font-size: 1.05em;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  line-height: 1.4;
-}
-
-/* line 10, ../sass/_typography.scss */
-h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, pre {
-  margin: 0 0 .6em 0;
-}
-
-/* line 14, ../sass/_typography.scss */
-h1 {
-  margin-bottom: 0.3em;
-  line-height: 1.2;
-}
-
-/* line 19, ../sass/_typography.scss */
-h2 {
-  margin-bottom: 0.4em;
-  line-height: 1.2666;
-}
-
-/* line 24, ../sass/_typography.scss */
-h3 {
-  margin-bottom: 0.51282em;
-  line-height: 1.3333;
-}
-
-/* line 29, ../sass/_typography.scss */
-ol {
-  padding-left: 1.4em;
-}
-
-/* line 33, ../sass/_typography.scss */
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-/* line 38, ../sass/_typography.scss */
-a {
-  color: #0044cc;
-  font-weight: bolder;
-}
-/* line 42, ../sass/_typography.scss */
-a:hover {
-  color: #003399;
-}
-
-/* line 47, ../sass/_typography.scss */
-blockquote {
-  margin: 0;
-  padding: 0 2em;
-  border-left: 0.2em solid black;
-  font-style: italic;
-}
-/* line 53, ../sass/_typography.scss */
-blockquote p:before {
-  margin: 0 0.2em 0 -0.6em;
-  content: "“";
-}
-/* line 58, ../sass/_typography.scss */
-blockquote p:after {
-  content: "”";
-}
-
-/* line 63, ../sass/_typography.scss */
-p code {
-  padding: .1em .4em .2em;
-  border: 1px solid #d9d9d9;
-  background-color: #f2f2f2;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-}
-
-/* line 71, ../sass/_typography.scss */
-pre {
-  padding: .85em 1.05em;
-  background-color: #333333;
-  color: white;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-}
-
-/* line 79, ../sass/_typography.scss */
-hr {
-  margin: 2em 0;
-  border: 0;
-  border-top: 1px dashed black;
-}
-
 /* line 4, ../sass/_layout.scss */
 .wrap {
   margin: 0 auto;
@@ -489,20 +390,151 @@ hr {
   max-width: 38em;
 }
 
-/* line 26, ../sass/styles.scss */
+/* line 4, ../sass/_typography.scss */
+body {
+  font-size: 1.0625em;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  line-height: 1.4;
+}
+
+/* line 20, ../sass/_typography.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+blockquote,
+pre {
+  margin: 0 0 .6em 0;
+}
+
+/* line 24, ../sass/_typography.scss */
+h1 {
+  margin-bottom: 0.3em;
+  line-height: 1.2;
+}
+
+/* line 29, ../sass/_typography.scss */
+h2 {
+  margin-bottom: 0.4em;
+  line-height: 1.2666;
+}
+
+/* line 34, ../sass/_typography.scss */
+h3 {
+  margin-bottom: 0.51282em;
+  line-height: 1.3333;
+}
+
+/* line 39, ../sass/_typography.scss */
+ol {
+  padding-left: 1.4em;
+}
+
+/* line 43, ../sass/_typography.scss */
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* line 48, ../sass/_typography.scss */
+a {
+  color: #0044cc;
+  font-weight: bolder;
+}
+/* line 52, ../sass/_typography.scss */
+a:hover {
+  color: #003399;
+}
+
+/* line 57, ../sass/_typography.scss */
+blockquote {
+  margin: 0;
+  padding: 0 2em;
+  border-left: 0.2em solid black;
+  font-style: italic;
+}
+/* line 63, ../sass/_typography.scss */
+blockquote p:before {
+  margin: 0 0.2em 0 -0.6em;
+  content: "“";
+}
+/* line 68, ../sass/_typography.scss */
+blockquote p:after {
+  content: "”";
+}
+
+/* line 73, ../sass/_typography.scss */
+p code {
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  border-radius: 0.2em;
+  padding: .1em .4em .2em;
+  border: 1px solid #d9d9d9;
+  background-color: #f2f2f2;
+}
+
+/* line 81, ../sass/_typography.scss */
+pre {
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  border-radius: 0.2em;
+  padding: .85em 1.05em;
+  background-color: #333333;
+  color: white;
+}
+
+/* line 89, ../sass/_typography.scss */
+hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px dashed black;
+}
+
+/* line 4, ../sass/_buttons.scss */
+.btn {
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  border-radius: 0.2em;
+  display: inline-block;
+  padding: .4em .6em;
+  border: 0;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  line-height: 1;
+}
+/* line 16, ../sass/_buttons.scss */
+.btn:hover {
+  background-color: #4d4d4d;
+  color: white;
+}
+
+/* line 28, ../sass/styles.scss */
 .text-list {
   list-style: disc;
   padding-left: 1em;
 }
 
-/* line 35, ../sass/styles.scss */
+/* line 37, ../sass/styles.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 39, ../sass/styles.scss */
+/* line 41, ../sass/styles.scss */
 body {
   background-color: white;
   color: black;
