@@ -2,19 +2,19 @@
 // BUTTONS
 //===============================================================================
 .btn{
-  @include border-radius(.2em);
+  @include border-radius(2px);
   
   display: inline-block;
-  padding: .4em .6em;
+  padding: .3em .5em;
   border: 0;
-  background-color: $ink;
+  background-color: $link;
   color: $paper;
   text-decoration: none;
   font-weight: normal;
   line-height: 1;
 
   &:hover{
-    background-color: lighten($ink, 30);
+    background-color: darken($link, 10);
     color: $paper;
   }
 }

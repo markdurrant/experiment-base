@@ -46,11 +46,11 @@ ul{
 }
 
 a{
-  color: $link-color;
+  color: $link;
   font-weight: bolder;
 
   &:hover{
-    color: $link-hover-color;  
+    color: darken($link, 10);  
   }
 }
 
