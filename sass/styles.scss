@@ -30,6 +30,12 @@ $link-hover-color: darken($link-color, 10);
   padding-left: 1em;
 }
 
+.clear-fix:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
 //===============================================================================
 // §GLOBAL-STYLES
 //===============================================================================
