@@ -8,49 +8,55 @@ $header: $ink;
 
 $body-font: sans-serif;
 
+$wrap-width: 38em;
+
 //===============================================================================
 // IMPORTS
 //===============================================================================
+// COMPASS: compass css3 mixins
 @import "compass/css3";
+
+// MIXINS: define mixins for later use
+@import "_mixins";
+
+// FONTS: @font-face rules
+@import "_fonts";
+
+// NORMALIZE: normalize.css from ttp://necolas.github.io/normalize.css/
 @import "_normalize.scss";
-@import "_layout.scss";
-@import "_typography.scss";
-@import "_buttons.scss";
-@import "_media-queries.scss";
 
-//===============================================================================
-// MIXINS
-//===============================================================================
+// THIRD-PARTY: styles for JS libs etc
 
-//===============================================================================
-// HELPER-CLASSES
-//===============================================================================
-.text-list{
-  list-style: disc;
-  padding-left: 1em;
-}
+// ELEMENTS: styles for standard html elements
+@import "_elements";
 
-.clear-fix:after{
-  content: "";
-  display: table;
-  clear: both;
-}
+// HELPERS: helper classes. clear-fix etc 
+@import "_helpers";
 
-//===============================================================================
-// GLOBAL-STYLES
-//===============================================================================
-// apply box sizing everywhere
-*{
-  @include box-sizing(border-box);
-}
+// LAYOUT: grids, wraps etc
+@import "_layout";
 
-body{
-  @extend %type_body;
+// TYPOGRAPHY:
+@import "_typography";
 
-  background-color: $paper;
-  color: $ink;
-}
+// SHARED-STYLES: styles used across multiple pages
+@import "_shared";
+
+// GLOBAL-ELEMENTS: elements that are used on every page. Eg headers & footers
+@import "_header";
+@import "_footer";
+
+// PAGES: styles per page
+
+// BROWSER-FIXES: styles per page
+@import "_browser-fixes";
+
+// MEDIA-QUERIES:
+@import "_media-queries";
 
 //===============================================================================
 // DEV-STYLES
 //===============================================================================
+// playground for development
+
+
