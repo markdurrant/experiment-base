@@ -156,7 +156,7 @@ legend {
 }
 
 /* line 201, ../sass/_normalize.scss */
-button,
+button, .btn,
 input,
 select,
 textarea {
@@ -166,34 +166,33 @@ textarea {
 }
 
 /* line 210, ../sass/_normalize.scss */
-button,
+button, .btn,
 input {
   line-height: normal;
 }
 
 /* line 220, ../sass/_normalize.scss */
-button,
+button, .btn,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
   cursor: pointer;
 }
 
-/* line 227, ../sass/_normalize.scss */
-button[disabled],
+/* line 228, ../sass/_normalize.scss */
+button[disabled], [disabled].btn,
 input[disabled] {
   cursor: default;
 }
 
-/* line 234, ../sass/_normalize.scss */
+/* line 235, ../sass/_normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
 
-/* line 241, ../sass/_normalize.scss */
+/* line 242, ../sass/_normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   -moz-box-sizing: content-box;
@@ -201,26 +200,26 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* line 250, ../sass/_normalize.scss */
+/* line 251, ../sass/_normalize.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 256, ../sass/_normalize.scss */
-button::-moz-focus-inner,
+/* line 257, ../sass/_normalize.scss */
+button::-moz-focus-inner, .btn::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 263, ../sass/_normalize.scss */
+/* line 264, ../sass/_normalize.scss */
 textarea {
   overflow: auto;
   vertical-align: top;
 }
 
-/* line 274, ../sass/_normalize.scss */
+/* line 275, ../sass/_normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -243,55 +242,66 @@ body {
   line-height: 1.4;
 }
 
-/* line 25, ../sass/_elements.scss */
+/* line 26, ../sass/_elements.scss */
 h1, h2, h3, h4, h5, h6,
 p,
 ul,
 ol,
+dl,
 blockquote,
 pre {
   margin: 0 0 .6em 0;
 }
 
-/* line 29, ../sass/_elements.scss */
+/* line 30, ../sass/_elements.scss */
 ol {
   padding-left: 1.4em;
 }
 
-/* line 33, ../sass/_elements.scss */
+/* line 34, ../sass/_elements.scss */
 ul {
   padding: 0;
   list-style: none;
 }
 
-/* line 38, ../sass/_elements.scss */
+/* line 39, ../sass/_elements.scss */
+dt {
+  font-weight: bold;
+}
+
+/* line 43, ../sass/_elements.scss */
+dd {
+  margin-left: 1.4em;
+}
+
+/* line 47, ../sass/_elements.scss */
 a {
   color: #0044cc;
   font-weight: bolder;
 }
-/* line 42, ../sass/_elements.scss */
+/* line 51, ../sass/_elements.scss */
 a:hover {
   color: #003399;
 }
 
-/* line 47, ../sass/_elements.scss */
+/* line 56, ../sass/_elements.scss */
 blockquote {
   margin: 0;
   padding: 0 2em;
   border-left: 0.2em solid black;
   font-style: italic;
 }
-/* line 53, ../sass/_elements.scss */
+/* line 62, ../sass/_elements.scss */
 blockquote p:before {
   margin: 0 0.2em 0 -0.6em;
   content: "“";
 }
-/* line 58, ../sass/_elements.scss */
+/* line 67, ../sass/_elements.scss */
 blockquote p:after {
   content: "”";
 }
 
-/* line 63, ../sass/_elements.scss */
+/* line 72, ../sass/_elements.scss */
 pre {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
@@ -303,23 +313,52 @@ pre {
   color: white;
 }
 
-/* line 71, ../sass/_elements.scss */
-p code {
+/* line 81, ../sass/_elements.scss */
+p code,
+p samp {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
   -ms-border-radius: 0.2em;
   -o-border-radius: 0.2em;
   border-radius: 0.2em;
-  padding: .1em .4em .2em;
-  border: 1px solid #d9d9d9;
-  background-color: #f2f2f2;
+  padding: 0 .4em;
+  border: 1px solid #dfdfdf;
+  background-color: whitesmoke;
 }
 
-/* line 79, ../sass/_elements.scss */
+/* line 89, ../sass/_elements.scss */
 hr {
   margin: 2em 0;
   border: 0;
   border-top: 1px dashed black;
+}
+
+/* line 98, ../sass/_elements.scss */
+button, .btn,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  display: inline-block;
+  padding: .3em .5em;
+  border: 0;
+  background-color: #b3b3b3;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  line-height: 1;
+}
+/* line 110, ../sass/_elements.scss */
+button:hover, .btn:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  background-color: #999999;
+  color: white;
 }
 
 /* line 5, ../sass/_helpers.scss */
@@ -448,26 +487,4 @@ h5 {
 /* line 91, ../sass/_typography.scss */
 h6 {
   margin-bottom: 0.8em;
-}
-
-/* line 4, ../sass/_shared.scss */
-.btn {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  display: inline-block;
-  padding: .3em .5em;
-  border: 0;
-  background-color: #0044cc;
-  color: white;
-  text-decoration: none;
-  font-weight: normal;
-  line-height: 1;
-}
-/* line 16, ../sass/_shared.scss */
-.btn:hover {
-  background-color: #003399;
-  color: white;
 }

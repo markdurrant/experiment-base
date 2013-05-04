@@ -218,7 +218,8 @@ button,
 html input[type="button"],  // 1 
 input[type="reset"],
 input[type="submit"] {
-    -webkit-appearance: button;  // 2 
+    // disabled so -webkit-appearance dosn't overide .btn styles
+    //-webkit-appearance: button;  // 2 
     cursor: pointer;  // 3 
 }
 

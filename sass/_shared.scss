@@ -2,19 +2,5 @@
 // SHARED-STYLES
 //===============================================================================
 .btn{
-  @include border-radius(2px);
-  
-  display: inline-block;
-  padding: .3em .5em;
-  border: 0;
-  background-color: $link;
-  color: $paper;
-  text-decoration: none;
-  font-weight: normal;
-  line-height: 1;
-
-  &:hover{
-    background-color: darken($link, 10);
-    color: $paper;
-  }
+  @extend button;
 }

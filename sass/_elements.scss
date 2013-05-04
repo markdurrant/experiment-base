@@ -21,18 +21,27 @@ h1, h2, h3, h4, h5, h6,
 p,
 ul,
 ol,
+dl,
 blockquote,
 pre{
   margin: 0 0 .6em 0;
 }
 
-ol{
+ol,{
   padding-left: 1.4em;
 }
 
 ul{
   padding: 0;
   list-style: none;
+}
+
+dt{
+  font-weight: bold;
+}
+
+dd{
+  margin-left: 1.4em;
 }
 
 a{
@@ -68,16 +77,38 @@ pre{
   color: $paper;
 }
 
-p code{
+p code,
+p samp{
   @include border-radius(.2em);
 
-  padding: .1em .4em .2em;
-  border: 1px solid darken($paper, 15);
-  background-color: darken($paper, 5);
+  padding: 0 .4em;
+  border: 1px solid darken($paper, 12.5);
+  background-color: darken($paper, 4);
 }
 
 hr{
   margin: 2em 0;
   border: 0;
   border-top: 1px dashed $ink;
+}
+
+button,
+input[type="button"], 
+input[type="reset"], 
+input[type="submit"]{
+  @include border-radius(2px);
+  
+  display: inline-block;
+  padding: .3em .5em;
+  border: 0;
+  background-color: darken($paper, 30);
+  color: $paper;
+  text-decoration: none;
+  font-weight: normal;
+  line-height: 1;
+
+  &:hover{
+    background-color: darken($paper, 40);
+    color: $paper;
+  }
 }
