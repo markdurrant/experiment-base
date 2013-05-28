@@ -1,20 +1,11 @@
 //===============================================================================
-// VARIABLES
-//===============================================================================
-$paper: hsl(0, 0, 100);
-$ink: hsl(0, 0, 0);
-$link: hsl(220,100,40);
-$header: $ink;
-
-$body-font: sans-serif;
-
-$wrap-width: 38em;
-
-//===============================================================================
 // IMPORTS
 //===============================================================================
 // COMPASS: compass css3 mixins
 @import "compass/css3";
+
+// VARIABLES: define mixins for later use
+@import "_variables";
 
 // MIXINS: define mixins for later use
 @import "_mixins";
