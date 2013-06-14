@@ -1,16 +1,13 @@
 //===============================================================================
 // IMPORTS
 //===============================================================================
-// COMPASS: compass css3 mixins
-@import "compass/css3";
-
 // VARIABLES: define mixins for later use
 @import "_variables";
 
 // MIXINS: define mixins for later use
 @import "_mixins";
 
-// FONTS: @font-face rules
+// FONTS: @font-face rules 
 @import "_fonts";
 
 // NORMALIZE: normalize.css from ttp://necolas.github.io/normalize.css/
@@ -49,5 +46,3 @@
 // DEV-STYLES
 //===============================================================================
 // playground for development
-
-
