@@ -38,15 +38,13 @@ module.exports = function (grunt) {
       }
     },
 
-    sass: {                  // Task
-      // dist: {                   // Target
-      //   options: {              // Target options
-      //     sassDir: 'app/sass',
-      //     cssDir: 'app/css',
-      //     environment: 'development'
-      //   }
-      // }
+    sass: {
       dist: {                            // Target
+        options: {                       // Target options
+          style: 'expanded',
+          lineNumbers: true
+        },
+
         files: {                         // Dictionary of files
           'app/css/styles.css': 'app/sass/styles.scss'       // 'destination': 'source'
         }
