@@ -99,7 +99,7 @@ module.exports = function (grunt) {
       options: {
         // Task-specific options go here.
       },
-      src: ['index.html', 'js/**/*', 'css/**/*', 'img/**/*']
+      src: ['app/index.html', 'app/js/**/*', 'app/css/**/*', 'app/img/**/*']
     }
   });
 
