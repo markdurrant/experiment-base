@@ -100,7 +100,7 @@ module.exports = function (grunt) {
         base: 'app'
       },
 
-      src: ['index.html', 'js/**/*', 'css/**/*', 'img/**/*']
+      src: '**/*'
     }
   });
 
