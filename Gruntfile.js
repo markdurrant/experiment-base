@@ -96,11 +96,20 @@ module.exports = function (grunt) {
     },
 
     'gh-pages': {
+      sass: {
+        dist: {                            // Target
+          options: {                       // Target options
+            style: 'compressed',
+            lineNumbers: false
+          }
+        }
+      },
+
       options: {
         base: 'app'
       },
 
-      src: '**/*'
+      src: ['*.html', 'css/**/*', 'js/**/*', 'img/**/*']
     }
   });
 
