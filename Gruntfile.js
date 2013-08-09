@@ -93,9 +93,18 @@ module.exports = function (grunt) {
       all: {
         path: 'http://localhost:' + port
       }
+    },
+
+    'gh-pages': {
+      options: {
+        // Task-specific options go here.
+      },
+      src: ['index.html', 'js/**/*', 'css/**/*', 'img/**/*']
     }
   });
 
   grunt.registerTask('default', ['open', 'connect', 'watch']);
 
+  // gh-pages stuff
+  grunt.loadNpmTasks('grunt-gh-pages');
 };
