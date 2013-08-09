@@ -97,9 +97,10 @@ module.exports = function (grunt) {
 
     'gh-pages': {
       options: {
-        // Task-specific options go here.
+        base: 'app'
       },
-      src: ['app/index.html', 'app/js/**/*', 'app/css/**/*', 'app/img/**/*']
+
+      src: ['index.html', 'js/**/*', 'css/**/*', 'img/**/*']
     }
   });
 
