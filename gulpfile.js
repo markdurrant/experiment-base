@@ -7,6 +7,7 @@ var     gulp = require( 'gulp' ),
       server = lr(),
         sass = require( 'gulp-sass' );
 
+
 // source and distribution folders 
 var  src = './src/';
 var dist = './dist/';
@@ -14,18 +15,26 @@ var dist = './dist/';
 // localhost port
 var LocalPort = 9876;
 
+var embedlr = require("gulp-embedlr");
+
 // start local server
 gulp.task( 'server', function(){
   connect.createServer(
       connect.static( dist )
   ).listen( LocalPort );
+
   console.log( "\nlocal server runing at http://localhost:" + LocalPort + "/\n" );
 });
 
-// watch & livereload
+// watch & liveReload
 gulp.task( 'watch', function () {
   server.listen( 35729, function ( err ) {
     if ( err ) return console.log( err );
+
+    // adds liveReload script to page
+    gulp.src( src + "*.html" )
+      .pipe( embedlr() )
+      .pipe( gulp.dest( dist ) );
 
     gulp.watch( src + 'sass/*.scss', function () {
         gulp.run( 'sass' );
