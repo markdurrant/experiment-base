@@ -44,7 +44,7 @@ gulp.task( 'lint', function() {
 
 // minify JS
 gulp.task( 'minifyJS', function() {
-  gulp.src( src + 'js/*.js' )
+  gulp.src( src + 'js/**/*.js' )
     .pipe( uglify() )
     .pipe( rename( { ext: '.min.js' } ) )
     .pipe( gulp.dest( dist + 'js' ) )
