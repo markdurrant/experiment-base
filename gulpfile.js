@@ -7,6 +7,8 @@ var     gulp = require( 'gulp' ),
       server = lr(),
      embedlr = require( "gulp-embedlr" ),
       jshint = require( "gulp-jshint" ),
+      uglify = require( 'gulp-uglify' ),
+      rename = require( 'gulp-rename' ),
         sass = require( 'gulp-sass' );
 
 
@@ -33,6 +35,14 @@ gulp.task( 'lint', function() {
     .pipe( jshint.reporter( 'default' ) );
 });
 
+// minify JS
+gulp.task( 'minifyJS', function() {
+  gulp.src( src + 'js/*.js' )
+    .pipe( uglify() )
+    .pipe( rename( { ext: '.min.js' } ) )
+    .pipe( gulp.dest( dist + 'js' ) )
+});
+
 // sass task
 gulp.task( 'sass', function () {
   gulp.src( src + 'sass/*.scss' )
@@ -55,7 +65,7 @@ gulp.task( 'watch', function () {
       .pipe( gulp.dest( dist ) );
 
     gulp.watch( src + 'sass/*.scss', function () {
-        gulp.run( 'sass', 'lint' );
+        gulp.run( 'sass' );
     });
   });
 });
