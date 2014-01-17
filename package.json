@@ -12,6 +12,11 @@
     "request": "2.1.x",
     "gulp-util": "~2.2.12",
     "gulp": "~3.4.0",
-    "gulp-sass": "~0.4.0"
+    "gulp-sass": "~0.4.0",
+    "connect": "~2.12.0"
+  },
+  "dependencies": {
+    "gulp-livereload": "~0.2.0",
+    "tiny-lr": "0.0.5"
   }
 }

@@ -1,13 +1,15 @@
-// Gulp.js
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-
 // Plugins
-var sass = require('gulp-sass');
+var     gulp = require( 'gulp' ),
+       gutil = require( 'gulp-util' ),
+     connect = require( 'connect' ),
+        sass = require( 'gulp-sass' );
 
 // source and distribution folders 
-var src = './src/';
+var  src = './src/';
 var dist = './dist/';
+
+// localhost port
+var port = 9876;
 
 // SASS task
 gulp.task( 'sass', function () {
@@ -17,6 +19,13 @@ gulp.task( 'sass', function () {
       outputStyle: [ 'compressed' ]
     }))
     .pipe( gulp.dest( dist + 'css' ) );
+});
+
+// start local server
+gulp.task( 'server', function(){
+  connect.createServer(
+      connect.static( dist )
+  ).listen( port );
 });
 
 gulp.task( 'default', function(){
