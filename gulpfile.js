@@ -5,6 +5,7 @@ var     gulp = require( 'gulp' ),
           lr = require( 'tiny-lr' ),
   livereload = require( 'gulp-livereload' ),
       server = lr(),
+     embedlr = require( "gulp-embedlr" ),
         sass = require( 'gulp-sass' );
 
 
@@ -14,8 +15,6 @@ var dist = './dist/';
 
 // localhost port
 var LocalPort = 9876;
-
-var embedlr = require("gulp-embedlr");
 
 // start local server
 gulp.task( 'server', function(){
