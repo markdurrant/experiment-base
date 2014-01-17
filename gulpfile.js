@@ -81,5 +81,5 @@ gulp.task( 'watch', function () {
 });
 
 gulp.task( 'default', function(){
-  // place code for your default task here
+  gulp.run( 'server', 'watch' );
 });
