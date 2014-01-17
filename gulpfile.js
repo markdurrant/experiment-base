@@ -61,6 +61,11 @@ gulp.task( 'sass', function () {
     .pipe( livereload( server ) );
 });
 
+// build task
+gulp.task( 'build', function () {
+  gulp.run( 'embedlr', 'lint', 'sass' );
+});
+
 // watch & liveReload
 gulp.task( 'watch', function () {
   server.listen( 35729, function ( err ) {
@@ -70,7 +75,7 @@ gulp.task( 'watch', function () {
       gulp.run( 'embedlr' );
     });    
 
-    gulp.watch( src + 'js/*.js', function () {
+    gulp.watch( [ src + 'js/*.js', './gulpfile.js' ], function () {
       gulp.run( 'lint', 'minifyJS' );
     });
 
@@ -80,6 +85,7 @@ gulp.task( 'watch', function () {
   });
 });
 
+// default task
 gulp.task( 'default', function(){
   gulp.run( 'server', 'watch' );
 });
