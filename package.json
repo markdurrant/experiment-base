@@ -1,6 +1,6 @@
 {
   "name": "experiment-base",
-  "version": "0.3.0",
+  "version": "0.0.1",
   "author": "Mark Durrant <mark.j.durrant@gmail.com>",
   "description": "a base project for experimentation",
   "repository": {
@@ -8,7 +8,9 @@
     "url": "https://github.com/nodejitsu/http-server.git"
   },
   "devDependencies": {
-    "vows"    :  "0.5.x",
-    "request" :  "2.1.x"
+    "vows": "0.5.x",
+    "request": "2.1.x",
+    "gulp-util": "~2.2.12",
+    "gulp": "~3.4.0"
   }
 }
