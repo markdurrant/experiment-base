@@ -9,7 +9,7 @@ var  src = './src/';
 var dist = './dist/';
 
 // localhost port
-var port = 9876;
+var LocalPort = 9876;
 
 // SASS task
 gulp.task( 'sass', function () {
@@ -25,7 +25,8 @@ gulp.task( 'sass', function () {
 gulp.task( 'server', function(){
   connect.createServer(
       connect.static( dist )
-  ).listen( port );
+  ).listen( LocalPort );
+  console.log( "\nlocal server runing at http://localhost:" + LocalPort + "/\n" );
 });
 
 gulp.task( 'default', function(){
