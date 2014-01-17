@@ -28,6 +28,13 @@ gulp.task( 'server', function(){
   console.log( "\nlocal server runing at http://localhost:" + LocalPort + "/\n" );
 });
 
+// add liveReload script
+gulp.task( 'embedlr', function() {
+  gulp.src( src + "*.html" )
+      .pipe( embedlr() )
+      .pipe( gulp.dest( dist ) );
+});
+
 // JShint
 gulp.task( 'lint', function() {
   gulp.src( src + 'js/*.js' )
@@ -59,13 +66,16 @@ gulp.task( 'watch', function () {
   server.listen( 35729, function ( err ) {
     if ( err ) return console.log( err );
 
-    // adds liveReload script to page
-    gulp.src( src + "*.html" )
-      .pipe( embedlr() )
-      .pipe( gulp.dest( dist ) );
+    gulp.watch( src + '*.html', function () {
+      gulp.run( 'embedlr' );
+    });    
+
+    gulp.watch( src + 'js/*.js', function () {
+      gulp.run( 'lint', 'minifyJS' );
+    });
 
     gulp.watch( src + 'sass/*.scss', function () {
-        gulp.run( 'sass' );
+      gulp.run( 'sass' );
     });
   });
 });
