@@ -63,7 +63,7 @@ gulp.task( 'sass', function () {
 
 // build task
 gulp.task( 'build', function () {
-  gulp.run( 'embedlr', 'lint', 'sass' );
+  gulp.run( 'embedlr', 'minifyJS', 'sass' );
 });
 
 // watch & liveReload
