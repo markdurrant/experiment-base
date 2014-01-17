@@ -1,0 +1,14 @@
+{
+  "name": "experiment-base",
+  "version": "0.3.0",
+  "author": "Mark Durrant <mark.j.durrant@gmail.com>",
+  "description": "a base project for experimentation",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodejitsu/http-server.git"
+  },
+  "devDependencies": {
+    "vows"    :  "0.5.x",
+    "request" :  "2.1.x"
+  }
+}
