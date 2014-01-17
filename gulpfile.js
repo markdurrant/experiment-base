@@ -32,7 +32,8 @@ gulp.task( 'server', function(){
 gulp.task( 'embedlr', function() {
   gulp.src( src + "*.html" )
       .pipe( embedlr() )
-      .pipe( gulp.dest( dist ) );
+      .pipe( gulp.dest( dist ) )
+      .pipe( livereload( server ) );
 });
 
 // JShint
@@ -48,6 +49,7 @@ gulp.task( 'minifyJS', function() {
     .pipe( uglify() )
     .pipe( rename( { ext: '.min.js' } ) )
     .pipe( gulp.dest( dist + 'js' ) )
+    .pipe( livereload( server ) );
 });
 
 // sass task
