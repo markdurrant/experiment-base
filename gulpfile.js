@@ -6,6 +6,7 @@ var     gulp = require( 'gulp' ),
   livereload = require( 'gulp-livereload' ),
       server = lr(),
      embedlr = require( "gulp-embedlr" ),
+      jshint = require( "gulp-jshint" ),
         sass = require( 'gulp-sass' );
 
 
@@ -25,20 +26,11 @@ gulp.task( 'server', function(){
   console.log( "\nlocal server runing at http://localhost:" + LocalPort + "/\n" );
 });
 
-// watch & liveReload
-gulp.task( 'watch', function () {
-  server.listen( 35729, function ( err ) {
-    if ( err ) return console.log( err );
-
-    // adds liveReload script to page
-    gulp.src( src + "*.html" )
-      .pipe( embedlr() )
-      .pipe( gulp.dest( dist ) );
-
-    gulp.watch( src + 'sass/*.scss', function () {
-        gulp.run( 'sass' );
-    });
-  });
+// JShint
+gulp.task( 'lint', function() {
+  gulp.src( src + 'js/*.js' )
+    .pipe( jshint() )
+    .pipe( jshint.reporter( 'default' ) );
 });
 
 // sass task
@@ -50,6 +42,22 @@ gulp.task( 'sass', function () {
     }))
     .pipe( gulp.dest( dist + 'css' ) )
     .pipe( livereload( server ) );
+});
+
+// watch & liveReload
+gulp.task( 'watch', function () {
+  server.listen( 35729, function ( err ) {
+    if ( err ) return console.log( err );
+
+    // adds liveReload script to page
+    gulp.src( src + "*.html" )
+      .pipe( embedlr() )
+      .pipe( gulp.dest( dist ) );
+
+    gulp.watch( src + 'sass/*.scss', function () {
+        gulp.run( 'sass', 'lint' );
+    });
+  });
 });
 
 gulp.task( 'default', function(){
