@@ -11,7 +11,8 @@ var     gulp = require( 'gulp' ),
       rename = require( 'gulp-rename' ),
         sass = require( 'gulp-sass' ),
     imagemin = require( 'gulp-imagemin' ),
-      svgmin = require( 'gulp-svgmin' );
+      svgmin = require( 'gulp-svgmin' )
+ consolidate = require( "gulp-consolidate" );
 
 // source and distribution folders 
 var  src = './src/';
@@ -72,7 +73,7 @@ gulp.task( 'sass', function () {
 
 // build task
 gulp.task( 'build', function () {
-  gulp.run( 'embedlr', 'minifyJS', 'sass' );
+  gulp.run( 'embedlr', 'minifyJS', 'sass', 'minifyImg', 'minifySvg' );
 });
 
 // minify SVG
@@ -87,6 +88,16 @@ gulp.task( 'minifyImg', function () {
   gulp.src( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ] )
     .pipe( imagemin() )
     .pipe( gulp.dest( dist + 'img' ) );
+});
+
+var myData = require( './src/data/test.json' );
+
+// complie templates
+gulp.task( 'templates', function () {
+  gulp.src( src + "templates/*.hbs" )
+  .pipe( consolidate( "handlebars", myData ) )
+  .pipe( rename( { ext: '.html' } ) )
+  .pipe( gulp.dest( dist ) );
 });
 
 // watch & liveReload
