@@ -9,7 +9,8 @@ var     gulp = require( 'gulp' ),
       jshint = require( "gulp-jshint" ),
       uglify = require( 'gulp-uglify' ),
       rename = require( 'gulp-rename' ),
-        sass = require( 'gulp-sass' );
+        sass = require( 'gulp-sass' ),
+    imagemin = require( 'gulp-imagemin' );
 
 // source and distribution folders 
 var  src = './src/';
@@ -71,6 +72,13 @@ gulp.task( 'sass', function () {
 // build task
 gulp.task( 'build', function () {
   gulp.run( 'embedlr', 'minifyJS', 'sass' );
+});
+
+// minify raster images
+gulp.task( 'minifyImg', function () {
+  gulp.src( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ] )
+    .pipe( imagemin() )
+    .pipe( gulp.dest( dist + 'img' ) );
 });
 
 // watch & liveReload
