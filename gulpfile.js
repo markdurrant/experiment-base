@@ -10,7 +10,8 @@ var     gulp = require( 'gulp' ),
       uglify = require( 'gulp-uglify' ),
       rename = require( 'gulp-rename' ),
         sass = require( 'gulp-sass' ),
-    imagemin = require( 'gulp-imagemin' );
+    imagemin = require( 'gulp-imagemin' ),
+      svgmin = require( 'gulp-svgmin' );
 
 // source and distribution folders 
 var  src = './src/';
@@ -72,6 +73,13 @@ gulp.task( 'sass', function () {
 // build task
 gulp.task( 'build', function () {
   gulp.run( 'embedlr', 'minifyJS', 'sass' );
+});
+
+// minify SVG
+gulp.task( 'minifySvg', function() {
+  gulp.src( src + 'img/*.svg' )
+    .pipe( svgmin() )
+    .pipe( gulp.dest( dist + 'img' ) );
 });
 
 // minify raster images
