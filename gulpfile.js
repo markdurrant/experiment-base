@@ -105,6 +105,14 @@ gulp.task( 'watch', function () {
     gulp.watch( src + 'sass/*.scss', function () {
       gulp.run( 'sass' );
     });
+
+    gulp.watch( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ], function () {
+      gulp.run( 'minifyImg' );
+    });  
+
+    gulp.watch( src + 'img/*.svg', function () {
+      gulp.run( 'minifySvg' );
+    });
   });
 });
 
