@@ -16,7 +16,7 @@ var  src = './src/';
 var dist = './dist/';
 
 // localhost port
-var LocalPort = 9876;
+var LocalPort = 4000;
 
 // start local server
 gulp.task( 'server', function(){
@@ -30,9 +30,15 @@ gulp.task( 'server', function(){
 // add liveReload script
 gulp.task( 'embedlr', function() {
   gulp.src( src + "*.html" )
-      .pipe( embedlr() )
-      .pipe( gulp.dest( dist ) )
-      .pipe( livereload( server ) );
+    .pipe( embedlr() )
+    .pipe( gulp.dest( dist ) )
+    .pipe( livereload( server ) );
+});
+
+// copy html
+gulp.task( 'copyHtml', function() {
+  gulp.src( src + "*.html" )
+    .pipe( gulp.dest( dist ) )
 });
 
 // JShint
@@ -73,7 +79,7 @@ gulp.task( 'watch', function () {
     if ( err ) return console.log( err );
 
     gulp.watch( src + '*.html', function () {
-      gulp.run( 'embedlr' );
+      gulp.run( 'copyHtml', 'embedlr' );
     });    
 
     gulp.watch( [ src + 'js/*.js', './gulpfile.js' ], function () {
