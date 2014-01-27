@@ -9,7 +9,10 @@ var     gulp = require( 'gulp' ),
       jshint = require( "gulp-jshint" ),
       uglify = require( 'gulp-uglify' ),
       rename = require( 'gulp-rename' ),
-        sass = require( 'gulp-sass' );
+        sass = require( 'gulp-sass' ),
+     declare = require( 'gulp-declare' ),
+      concat = require( 'gulp-concat' ),
+  handlebars = require( 'gulp-handlebars' );
 
 
 // source and distribution folders 
@@ -66,6 +69,16 @@ gulp.task( 'sass', function () {
 // build task
 gulp.task( 'build', function () {
   gulp.run( 'embedlr', 'minifyJS', 'sass' );
+
+// handlebars task
+gulp.task( 'handlebars', function() {
+  gulp.src( ['src/templates/*.hbs'] )
+    .pipe( handlebars() ) // returns a bare function
+    .pipe( declare({
+      namespace: 'MyApp.templates'
+    }))
+    .pipe( concat( 'templates.js') )
+    .pipe( gulp.dest( 'dist/js/') );
 });
 
 // watch & liveReload
