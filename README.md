@@ -8,9 +8,7 @@ A base [gulp](http://gulpjs.com/) project for web experiments. By [Mark Durrant]
 
 Install [node](http://nodejs.org/) & [gulp](http://gulpjs.com/)
 
-`brew install node`
-
-`npm install -g gulp`
+`brew install node`, `npm install -g gulp`
 
 Install packages
 
@@ -25,10 +23,8 @@ Run Gulp
 
 `gulp`
 
-* * *
-
 ### Todos
-* Add image tasks to watch
+* ~~Add image tasks to watch~~
 * Add svg to png 
 * Look at inline media queries
 * Look at base SASS (steal from [this](http://responsivebp.com/)?)

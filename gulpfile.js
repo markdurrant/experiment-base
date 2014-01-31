@@ -72,21 +72,23 @@ gulp.task( 'sass', function () {
 
 // build task
 gulp.task( 'build', function () {
-  gulp.run( 'embedlr', 'minifyJS', 'sass' );
+  gulp.run( 'embedlr', 'minifyJS', 'sass', 'minifyImg', 'minifySvg' );
 });
 
 // minify SVG
 gulp.task( 'minifySvg', function() {
   gulp.src( src + 'img/*.svg' )
     .pipe( svgmin() )
-    .pipe( gulp.dest( dist + 'img' ) );
+    .pipe( gulp.dest( dist + 'img' ) )
+    .pipe( livereload( server ) );
 });
 
 // minify raster images
 gulp.task( 'minifyImg', function () {
   gulp.src( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ] )
     .pipe( imagemin() )
-    .pipe( gulp.dest( dist + 'img' ) );
+    .pipe( gulp.dest( dist + 'img' ) )
+    .pipe( livereload( server ) );
 });
 
 // watch & liveReload
