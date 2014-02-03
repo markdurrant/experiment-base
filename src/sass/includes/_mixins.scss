@@ -3,10 +3,11 @@
 //===============================================================================
 // box-sizing
 // @include box-sizing( border-box );
-@mixin box-sizing( $box-model ) {
-  -webkit-box-sizing: $box-model;
-     -moz-box-sizing: $box-model;
+@mixin box-sizing( $box-model: border-box ) {
           box-sizing: $box-model;
+      -ms-box-sizing: $box-model;
+     -moz-box-sizing: $box-model;
+  -webkit-box-sizing: $box-model;
 }
 
 // micro clearfix
@@ -17,4 +18,24 @@
     display: table;
     clear: both;
   }
+}
+
+// transitions
+// @include transition( all, .25s, $ease-in-quad )
+@mixin transition( $property, $duration, $timing-function... ) {
+          transition: $property, $duration, $timing-function;
+      -ms-transition: $property, $duration, $timing-function;
+     -moz-transition: $property, $duration, $timing-function;
+  -webkit-transition: $property, $duration, $timing-function; 
+}
+
+// linear gradient
+// @include linear-gradient( red, blue );
+@mixin linear-gradient( $first, $second ) {
+  background-color: $first;
+  background-image: -o-linear-gradient( top, $first 0%, $second 100% );
+  background-image: -ms-linear-gradient( top, $first 0%, $second 100% );
+  background-image: -moz-linear-gradient( top,  $first,  $second );
+  background-image: -webkit-gradient( linear, left top, left bottom, from( $first ), to( $second ) );
+  background-image: linear-gradient( top, $first 0%, $second 100% );
 }

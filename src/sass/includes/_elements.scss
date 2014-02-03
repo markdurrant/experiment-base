@@ -4,7 +4,7 @@
 *,
 *::before,
 *:after {
-  @include box-sizing( border-box );
-  
+  @include box-sizing;
+
   -webkit-font-smoothing: antialiased;
 }

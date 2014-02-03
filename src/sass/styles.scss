@@ -10,11 +10,11 @@
 // define mixins & functions
 @import "_mixins.scss";
 
-// helper classes
-@import "_helpers.scss";
-
 // ! normalize.css v3.0.0 | MIT License | git.io/normalize
 @import "_normalize.scss";
+
+// helper classes
+@import "_helpers.scss";
 
 // raw elements 
 @import "_elements.scss";
