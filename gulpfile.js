@@ -1,6 +1,7 @@
 // Plugins
 var     gulp = require( 'gulp' ),
        gutil = require( 'gulp-util' ),
+        path = require( 'path' ),
      connect = require( 'connect' ),
           lr = require( 'tiny-lr' ),
   livereload = require( 'gulp-livereload' ),
@@ -15,7 +16,7 @@ var     gulp = require( 'gulp' ),
 
 // source and distribution folders 
 var  src = './src/';
-var dist = './dist/';
+var dist = path.resolve( './dist/' );
 
 // localhost port
 var LocalPort = 4000;
@@ -55,7 +56,7 @@ gulp.task( 'minifyJS', function() {
   gulp.src( src + 'js/**/*.js' )
     .pipe( uglify() )
     .pipe( rename( { ext: '.min.js' } ) )
-    .pipe( gulp.dest( dist + 'js' ) )
+    .pipe( gulp.dest( dist + '/js' ) )
     .pipe( livereload( server ) );
 });
 
@@ -63,10 +64,10 @@ gulp.task( 'minifyJS', function() {
 gulp.task( 'sass', function () {
   gulp.src( src + 'sass/*.scss' )
     .pipe( sass({
-      includePaths: [ src + 'sass/includes' ],
-      outputStyle: [ 'compressed' ]
+      outputStyle: [ 'compressed' ],
+      errLogToConsole: true
     }))
-    .pipe( gulp.dest( dist + 'css' ) )
+    .pipe( gulp.dest( dist + '/css' ) )
     .pipe( livereload( server ) );
 });
 
@@ -79,7 +80,7 @@ gulp.task( 'build', function () {
 gulp.task( 'minifySvg', function() {
   gulp.src( src + 'img/*.svg' )
     .pipe( svgmin() )
-    .pipe( gulp.dest( dist + 'img' ) )
+    .pipe( gulp.dest( dist + '/img' ) )
     .pipe( livereload( server ) );
 });
 
@@ -87,7 +88,7 @@ gulp.task( 'minifySvg', function() {
 gulp.task( 'minifyImg', function () {
   gulp.src( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ] )
     .pipe( imagemin() )
-    .pipe( gulp.dest( dist + 'img' ) )
+    .pipe( gulp.dest( dist + '/img' ) )
     .pipe( livereload( server ) );
 });
 

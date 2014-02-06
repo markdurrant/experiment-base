@@ -27,7 +27,6 @@ Run Gulp
 * ~~Add image tasks to watch~~
 * Look at base SASS (steal from [this](http://responsivebp.com/)?)
 * Look at inline media queries
-* Fix SASS error bug (gulp dies when SASS errors)
 * Style JSHint output
 * Add precompilation of Handlebars templates
 * Fix LiveReload bug (sometimes embedlr will add script after <body>)
