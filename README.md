@@ -24,11 +24,10 @@ Run Gulp
 `gulp`
 
 ### Todos
-* ~~Add image tasks to watch~~
 * Look at base SASS (steal from [this](http://responsivebp.com/)?)
 * Look at inline media queries
 * Style JSHint output
 * Add precompilation of Handlebars templates
 * Fix LiveReload bug (sometimes embedlr will add script after <body>)
 * Concatenate JS files
-* Add svg to png 
+* Add svg to png
