@@ -8,6 +8,7 @@ var     gulp = require( 'gulp' ),
       server = lr(),
      embedlr = require( "gulp-embedlr" ),
       jshint = require( "gulp-jshint" ),
+     stylish = require( 'jshint-stylish' );
       uglify = require( 'gulp-uglify' ),
       rename = require( 'gulp-rename' ),
         sass = require( 'gulp-sass' ),
@@ -48,7 +49,7 @@ gulp.task( 'copyHtml', function() {
 gulp.task( 'lint', function() {
   gulp.src( src + 'js/*.js' )
     .pipe( jshint() )
-    .pipe( jshint.reporter( 'default' ) );
+    .pipe( jshint.reporter( stylish ) );
 });
 
 // minify JS
