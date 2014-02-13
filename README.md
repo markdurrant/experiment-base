@@ -27,6 +27,5 @@ Run Gulp
 * Look at base SASS (steal from [this](http://responsivebp.com/)?)
 * Look at inline media queries
 * Add precompilation of Handlebars templates
-* Fix LiveReload bug (sometimes embedlr will add script after <body>)
 * Concatenate JS files
 * Add svg to png
