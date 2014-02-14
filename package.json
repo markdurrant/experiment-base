@@ -18,8 +18,7 @@
     "gulp-rename": "~0.2.2",
     "gulp-imagemin": "~0.1.4",
     "gulp-svgmin": "~0.4.1",
-    "jshint-stylish": "http://github.com/markdurrant/jshint-stylish/tarball/master",
-    "gulp-svg2png": "~0.2.0"
+    "jshint-stylish": "http://github.com/markdurrant/jshint-stylish/tarball/master"
   },
   "dependencies": {
     "gulp-livereload": "~0.2.0",
