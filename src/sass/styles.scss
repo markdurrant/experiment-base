@@ -13,5 +13,17 @@
 // ! normalize.css v3.0.0 | MIT License | git.io/normalize
 @import "_normalize.scss";
 
-// raw elements 
-@import "_elements.scss";
+// typographic styling
+@import "_typography.scss";
+
+// layout styles
+@import "_layout.scss";
+
+// form styling
+@import "_forms.scss";
+
+// button styling
+@import "_buttons.scss";
+
+// table styling
+@import "_tables.scss";

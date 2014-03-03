@@ -1,10 +1,8 @@
 //===============================================================================
-// ELEMENTS 
+// BUTTONS
 //===============================================================================
-*,
-*::before,
-*:after {
-  @include box-sizing;
+button,
+.btn,
+input[type=button] {
 
-  -webkit-font-smoothing: antialiased;
 }
