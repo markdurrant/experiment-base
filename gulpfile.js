@@ -40,12 +40,6 @@ gulp.task( 'embedlr', function() {
     .pipe( livereload( server ) );
 });
 
-// copy html
-gulp.task( 'copyHtml', function() {
-  gulp.src( src + "*.html" )
-    .pipe( gulp.dest( dist ) )
-});
-
 // JShint
 gulp.task( 'lint', function() {
   gulp.src( src + 'js/*.js' )
@@ -107,7 +101,7 @@ gulp.task( 'watch', function () {
     if ( err ) return console.log( err );
 
     gulp.watch( src + '*.html', function () {
-      gulp.run( 'copyHtml', 'embedlr' );
+      gulp.run( 'embedlr' );
     });    
 
     gulp.watch( [ src + 'js/*.js', './gulpfile.js' ], function () {
