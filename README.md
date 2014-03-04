@@ -24,7 +24,6 @@ Run Gulp
 `gulp`
 
 ### Todos
-* Look at base SASS (steal from [this](http://responsivebp.com/)?)
 * Add precompilation of Handlebars templates
 * Concatenate JS files
 * Add svg to png

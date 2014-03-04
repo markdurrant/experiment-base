@@ -1,6 +1,20 @@
 //===============================================================================
 // MIXINS
 //===============================================================================
+// to-do
+// consistent mixins for
+// clearfix
+// box-sizing
+// transitions
+// transforms
+// animation
+// arbitrary-vendor-prefix
+// gradients
+// appearance
+// perspective
+// hide-text
+
+
 // box-sizing
 // @include box-sizing( border-box );
 @mixin box-sizing( $box-model: border-box ) {
