@@ -6,19 +6,25 @@
 //===============================================================================
 $paper: white;
 $ink: black;
-$body-font: sans-serif;
 
 $header: $ink;
 $link: blue;
 
+// FONTS
+//===============================================================================
+$body-font: sans-serif;
+
 // DIMENSIONS
 //===============================================================================
-   $tera: 4.6em;
-   $giga: 3.5em;
-   $mega: 2.6em;
-  $alpha: 2em;
-   $beta: 1.5em;
-  $gamma: 1.17em;
-  $delta: 1em;
-$epsilon: 0.83em;
-   $zeta: 0.75em;
+$base-font-size: 20px;
+
+// font sizes
+$tera: 4.2rem; // 84px / 20px
+$giga: 3.5rem; // 70px  / 20px
+$mega: 2.6rem; // 52px  / 20px
+$alpha: 2.2rem; // 44px  / 20px
+$beta: 1.6rem; // 32px  / 20px
+$gamma: 1.3rem; // 26px  / 20px
+$delta: 1rem; // 20px  / 20px
+$epsilon: 0.8rem; // 16px  / 20px
+$zeta: 0.6rem; // 12px  / 20px
