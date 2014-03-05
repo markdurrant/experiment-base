@@ -16,3 +16,24 @@
     clear: both;
   }
 }
+
+// APPEARANCE
+// @include apperance;
+@mixin appearance( $value: none ) {
+  -webkit-appearance: $value;
+     -moz-appearance: $value;
+          appearance: $value;
+}
+
+// HIDE TEXT
+// @include hide-text;
+@mixin hide-text {
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+  }
+}
