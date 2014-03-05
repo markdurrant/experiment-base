@@ -14,6 +14,7 @@ var     gulp = require( 'gulp' ),
         sass = require( 'gulp-sass' ),
       prefix = require( 'gulp-autoprefixer' ),
     imagemin = require( 'gulp-imagemin' ),
+     svg2png = require( 'gulp-svg2png' ),
       svgmin = require( 'gulp-svgmin' );
 
 // source and distribution folders 
@@ -24,7 +25,7 @@ var dist = path.resolve( './dist/' );
 var LocalPort = 4000;
 
 // start local server
-gulp.task( 'server', function(){
+gulp.task( 'server', function () {
   connect.createServer(
       connect.static( dist )
   ).listen( LocalPort );
@@ -33,7 +34,7 @@ gulp.task( 'server', function(){
 });
 
 // add liveReload script
-gulp.task( 'embedlr', function() {
+gulp.task( 'embedlr', function () {
   gulp.src( src + "*.html" )
     .pipe( embedlr() )
     .pipe( gulp.dest( dist ) )
@@ -41,14 +42,14 @@ gulp.task( 'embedlr', function() {
 });
 
 // JShint
-gulp.task( 'lint', function() {
+gulp.task( 'lint', function () {
   gulp.src( src + 'js/*.js' )
     .pipe( jshint() )
     .pipe( jshint.reporter( stylish ) );
 });
 
 // minify JS
-gulp.task( 'minifyJS', function() {
+gulp.task( 'minifyJS', function () {
   gulp.src( src + 'js/**/*.js' )
     .pipe( uglify() )
     .pipe( rename( { ext: '.min.js' } ) )
@@ -74,9 +75,16 @@ gulp.task( 'build', function () {
 });
 
 // minify SVG
-gulp.task( 'minifySvg', function() {
+gulp.task( 'minifySvg', function () {
   gulp.src( src + 'img/*.svg' )
     .pipe( svgmin() )
+    .pipe( gulp.dest( dist + '/img' ) )
+    .pipe( livereload( server ) );
+});
+
+gulp.task( 'svg2png', function () {
+  gulp.src( src + 'img/*.svg' )
+    .pipe( svg2png() )
     .pipe( gulp.dest( dist + '/img' ) )
     .pipe( livereload( server ) );
 });
@@ -111,7 +119,7 @@ gulp.task( 'watch', function () {
     });  
 
     gulp.watch( src + 'img/*.svg', function () {
-      gulp.run( 'minifySvg' );
+      gulp.run( 'minifySvg', 'svg2png' );
     });
   });
 });

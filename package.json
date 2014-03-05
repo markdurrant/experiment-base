@@ -19,7 +19,8 @@
     "gulp-imagemin": "~0.1.4",
     "gulp-svgmin": "~0.4.1",
     "jshint-stylish": "http://github.com/markdurrant/jshint-stylish/tarball/master",
-    "gulp-autoprefixer": "0.0.6"
+    "gulp-autoprefixer": "0.0.6",
+    "gulp-svg2png": "~0.2.2"
   },
   "dependencies": {
     "gulp-livereload": "~0.2.0",
