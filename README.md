@@ -22,8 +22,3 @@ Run Gulp
 (Starts local server, LiveReload, SASS compilation, JS hinting & minification, image minification)
 
 `gulp`
-
-### Todos
-* Add precompilation of Handlebars templates
-* Concatenate JS files
-* Add svg to png
