@@ -12,6 +12,7 @@ var     gulp = require( 'gulp' ),
       uglify = require( 'gulp-uglify' ),
       rename = require( 'gulp-rename' ),
         sass = require( 'gulp-sass' ),
+      prefix = require( 'gulp-autoprefixer' ),
     imagemin = require( 'gulp-imagemin' ),
       svgmin = require( 'gulp-svgmin' );
 
@@ -55,20 +56,21 @@ gulp.task( 'minifyJS', function() {
     .pipe( livereload( server ) );
 });
 
-// sass task
-gulp.task( 'sass', function () {
+// CSS task
+gulp.task( 'css', function () {
   gulp.src( src + 'sass/*.scss' )
     .pipe( sass({
       outputStyle: [ 'compressed' ],
       errLogToConsole: true
     }))
+    .pipe( prefix() )
     .pipe( gulp.dest( dist + '/css' ) )
     .pipe( livereload( server ) );
 });
 
 // build task
 gulp.task( 'build', function () {
-  gulp.run( 'embedlr', 'minifyJS', 'sass', 'minifyImg', 'minifySvg' );
+  gulp.run( 'embedlr', 'minifyJS', 'css', 'minifyImg', 'minifySvg' );
 });
 
 // minify SVG
@@ -101,7 +103,7 @@ gulp.task( 'watch', function () {
     });
 
     gulp.watch( src + 'sass/*.scss', function () {
-      gulp.run( 'sass' );
+      gulp.run( 'css' );
     });
 
     gulp.watch( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ], function () {
