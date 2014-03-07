@@ -32,3 +32,10 @@
     height: 100%;
   }
 }
+
+// MARGIN AUTO
+// @include margin-auto;
+@mixin margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}

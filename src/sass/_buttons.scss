@@ -4,5 +4,9 @@
 button,
 .btn,
 input[type=button] {
+  @include appearance;
 
+  outline: 0;
+  border: 0;
+  padding: 0; 
 }
