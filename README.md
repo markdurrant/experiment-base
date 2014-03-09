@@ -22,3 +22,8 @@ Run Gulp
 (Starts local server, LiveReload, SASS compilation, JS hinting & minification, image minification)
 
 `gulp`
+
+### todo
+* add in suport fo JSON
+* add in gh-pages export
+* make SASS only version?
