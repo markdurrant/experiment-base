@@ -26,4 +26,7 @@ Run Gulp
 ### todo
 * add in suport fo JSON
 * add in gh-pages export
-* make SASS only version?
+* html validation
+* alert(sound) on errors
+* style success/error msgs
+* SASS only version?
