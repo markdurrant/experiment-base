@@ -69,11 +69,6 @@ gulp.task( 'css', function () {
     .pipe( livereload( server ) );
 });
 
-// build task
-gulp.task( 'build', function () {
-  gulp.run( 'embedlr', 'minifyJS', 'css', 'minifyImg', 'minifySvg' );
-});
-
 // minify SVG
 gulp.task( 'minifySvg', function () {
   gulp.src( src + 'img/*.svg' )
@@ -82,6 +77,7 @@ gulp.task( 'minifySvg', function () {
     .pipe( livereload( server ) );
 });
 
+// create .PNGs from .SVGs
 gulp.task( 'svg2png', function () {
   gulp.src( src + 'img/*.svg' )
     .pipe( svg2png() )
@@ -95,6 +91,11 @@ gulp.task( 'minifyImg', function () {
     .pipe( imagemin() )
     .pipe( gulp.dest( dist + '/img' ) )
     .pipe( livereload( server ) );
+});
+
+// build all assets
+gulp.task( 'build', function () {
+  gulp.run( 'embedlr', 'minifyJS', 'css', 'minifyImg', 'minifySvg' );
 });
 
 // watch & liveReload

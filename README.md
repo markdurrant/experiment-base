@@ -25,6 +25,7 @@ Run Gulp
 
 ### todo
 * clear /dist before gulp build
+* add dev folder (unminified assets + no liveReload)
 * add gulp build to default task 
 * add in suport fo JSON
 * add in gh-pages export
