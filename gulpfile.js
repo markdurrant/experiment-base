@@ -95,7 +95,7 @@ gulp.task( 'minifyImg', function () {
 
 // build all assets
 gulp.task( 'build', function () {
-  gulp.run( 'embedlr', 'minifyJS', 'css', 'minifyImg', 'minifySvg' );
+  gulp.run( 'embedlr','lint', 'minifyJS', 'css', 'minifySvg', 'svg2png', 'minifyImg' );
 });
 
 // watch & liveReload
