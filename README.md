@@ -24,6 +24,8 @@ Run Gulp
 `gulp`
 
 ### todo
+* clear /dist before gulp build
+* add gulp build to default task 
 * add in suport fo JSON
 * add in gh-pages export
 * html validation
