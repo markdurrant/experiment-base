@@ -1,6 +1,7 @@
 // Plugins
 var     gulp = require( 'gulp' ),
        gutil = require( 'gulp-util' ),
+      rename = require( 'gulp-rename' ),
         path = require( 'path' ),
      connect = require( 'connect' ),
           lr = require( 'tiny-lr' ),
@@ -10,12 +11,12 @@ var     gulp = require( 'gulp' ),
       jshint = require( "gulp-jshint" ),
      stylish = require( 'jshint-stylish' );
       uglify = require( 'gulp-uglify' ),
-      rename = require( 'gulp-rename' ),
         sass = require( 'gulp-sass' ),
       prefix = require( 'gulp-autoprefixer' ),
-    imagemin = require( 'gulp-imagemin' ),
+      svgmin = require( 'gulp-svgmin' ),
      svg2png = require( 'gulp-svg2png' ),
-      svgmin = require( 'gulp-svgmin' );
+    imagemin = require( 'gulp-imagemin' ),
+       clean = require( 'gulp-clean' );
 
 // source and distribution folders 
 var  src = './src/';
@@ -25,7 +26,7 @@ var dist = path.resolve( './dist/' );
 var LocalPort = 4000;
 
 // start local server
-gulp.task( 'server', function () {
+gulp.task( 'server', function() {
   connect.createServer(
       connect.static( dist )
   ).listen( LocalPort );
@@ -34,7 +35,7 @@ gulp.task( 'server', function () {
 });
 
 // add liveReload script
-gulp.task( 'embedlr', function () {
+gulp.task( 'embedlr', function() {
   gulp.src( src + "*.html" )
     .pipe( embedlr() )
     .pipe( gulp.dest( dist ) )
@@ -42,14 +43,14 @@ gulp.task( 'embedlr', function () {
 });
 
 // JShint
-gulp.task( 'lint', function () {
+gulp.task( 'lint', function() {
   gulp.src( src + 'js/*.js' )
     .pipe( jshint() )
     .pipe( jshint.reporter( stylish ) );
 });
 
 // minify JS
-gulp.task( 'minifyJS', function () {
+gulp.task( 'minifyJS', function() {
   gulp.src( src + 'js/**/*.js' )
     .pipe( uglify() )
     .pipe( rename( { ext: '.min.js' } ) )
@@ -57,8 +58,8 @@ gulp.task( 'minifyJS', function () {
     .pipe( livereload( server ) );
 });
 
-// CSS task
-gulp.task( 'css', function () {
+// complie sass & add vendor prefixes
+gulp.task( 'css', function() {
   gulp.src( src + 'sass/*.scss' )
     .pipe( sass({
       outputStyle: [ 'compressed' ],
@@ -70,7 +71,7 @@ gulp.task( 'css', function () {
 });
 
 // minify SVG
-gulp.task( 'minifySvg', function () {
+gulp.task( 'minifySvg', function() {
   gulp.src( src + 'img/*.svg' )
     .pipe( svgmin() )
     .pipe( gulp.dest( dist + '/img' ) )
@@ -78,7 +79,7 @@ gulp.task( 'minifySvg', function () {
 });
 
 // create .PNGs from .SVGs
-gulp.task( 'svg2png', function () {
+gulp.task( 'svg2png', function() {
   gulp.src( src + 'img/*.svg' )
     .pipe( svg2png() )
     .pipe( gulp.dest( dist + '/img' ) )
@@ -86,41 +87,47 @@ gulp.task( 'svg2png', function () {
 });
 
 // minify raster images
-gulp.task( 'minifyImg', function () {
+gulp.task( 'minifyImg', function() {
   gulp.src( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ] )
     .pipe( imagemin() )
     .pipe( gulp.dest( dist + '/img' ) )
     .pipe( livereload( server ) );
 });
 
+// clean /dist for build task
+gulp.task( 'clean', function() {
+  gulp.src( dist, { read: false } )
+    .pipe( clean() );
+}); 
+
 // build all assets
-gulp.task( 'build', function () {
+gulp.task( 'build', function() {
   gulp.run( 'embedlr','lint', 'minifyJS', 'css', 'minifySvg', 'svg2png', 'minifyImg' );
 });
 
 // watch & liveReload
-gulp.task( 'watch', function () {
+gulp.task( 'watch', function() {
   server.listen( 35729, function ( err ) {
     if ( err ) return console.log( err );
 
-    gulp.watch( src + '*.html', function () {
+    gulp.watch( src + '*.html', function() {
       gulp.run( 'embedlr' );
     });    
 
-    gulp.watch( [ src + 'js/*.js', './gulpfile.js' ], function () {
+    gulp.watch( [ src + 'js/*.js', './gulpfile.js' ], function() {
       gulp.run( 'lint', 'minifyJS' );
     });
 
-    gulp.watch( src + 'sass/*.scss', function () {
+    gulp.watch( src + 'sass/*.scss', function() {
       gulp.run( 'css' );
     });
 
-    gulp.watch( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ], function () {
+    gulp.watch( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ], function() {
       gulp.run( 'minifyImg' );
     });  
 
-    gulp.watch( src + 'img/*.svg', function () {
-      gulp.run( 'minifySvg', 'svg2png' );
+    gulp.watch( src + 'img/*.svg', function() {
+      gulp.run( 'minifySvg', 'svg2png', 'minifyImg' );
     });
   });
 });
