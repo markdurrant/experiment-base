@@ -26,7 +26,7 @@ var dist = path.resolve( './dist/' );
 var LocalPort = 4000;
 
 // start local server
-gulp.task( 'server', [ 'build' ], function() {
+gulp.task( 'server', function() {
   connect.createServer(
       connect.static( dist )
   ).listen( LocalPort );
@@ -101,12 +101,12 @@ gulp.task( 'clean', function() {
 }); 
 
 // build all assets
-gulp.task( 'build', [ 'clean' ], function() {
+gulp.task( 'build', function() {
   gulp.run( 'embedlr','lint', 'minifyJS', 'css', 'minifySvg', 'svg2png', 'minifyImg' );
 });
 
 // watch & liveReload
-gulp.task( 'watch', [ 'build' ], function() {
+gulp.task( 'watch', function() {
   server.listen( 35729, function ( err ) {
     if ( err ) return console.log( err );
 
@@ -134,5 +134,5 @@ gulp.task( 'watch', [ 'build' ], function() {
 
 // default task
 gulp.task( 'default', function(){
-  gulp.run( 'clean', 'build', 'server', 'watch' );
+  gulp.run( 'server', 'watch' );
 });
