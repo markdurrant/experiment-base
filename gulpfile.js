@@ -57,6 +57,13 @@ gulp.task( 'minifyJS', function() {
     .pipe( livereload( server ) );
 });
 
+// JSON
+gulp.task( 'json', function() {
+  gulp.src( src + 'data/**/*.json' )
+    .pipe( gulp.dest( dist + '/data' ) )
+    .pipe( livereload( server ) );
+});
+
 // complie sass & add vendor prefixes
 gulp.task( 'css', function() {
   gulp.src( src + 'sass/*.scss' )
@@ -93,7 +100,7 @@ gulp.task( 'clean', function() {
 
 // build all assets
 gulp.task( 'build', function() {
-  gulp.run( 'embedlr','lint', 'minifyJS', 'css', 'minifySvg', 'minifyImg' );
+  gulp.run( 'embedlr','lint', 'minifyJS', 'json', 'css', 'minifySvg', 'minifyImg' );
 });
 
 // watch & liveReload
@@ -107,6 +114,10 @@ gulp.task( 'watch', function() {
 
     gulp.watch( [ src + 'js/*.js', './gulpfile.js' ], function() {
       gulp.run( 'lint', 'minifyJS' );
+    });
+
+    gulp.watch( src + 'data/*.json', function() {
+      gulp.run( 'json' );
     });
 
     gulp.watch( src + 'sass/*.scss', function() {
