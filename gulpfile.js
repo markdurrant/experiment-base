@@ -18,8 +18,8 @@ var     gulp = require( 'gulp' ),
        clean = require( 'gulp-clean' );
 
 // source and distribution folders 
-var  src = './src/';
-var dist = path.resolve( './dist/' );
+var  src = 'src/';
+var dist = path.resolve( 'dist/' );
 
 // localhost port
 var LocalPort = 4000;

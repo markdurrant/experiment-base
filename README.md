@@ -24,12 +24,10 @@ Run Gulp
 `gulp`
 
 ### todo
-* register new files without needing to restart gulp
 * clear /dist before gulp build
-* add dev folder (unminified assets + no liveReload)
-* add gulp build to default task 
+* seperate dev & dist folders. (unminified assets + liveReload) & (minified assets +  no liveReload)
+* add gulp build to default task
 * add in gh-pages export
-* html validation
 * alert(sound) on errors
 * style success/error msgs
 * SASS only version?
