@@ -24,9 +24,7 @@ Run Gulp
 `gulp`
 
 ### todo
-* clear /dist before gulp build
 * seperate dev & dist folders. (unminified assets + liveReload) & (minified assets +  no liveReload)
-* add gulp build to default task
 * add in gh-pages export
 * alert(sound) on errors
 * style success/error msgs

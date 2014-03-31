@@ -15,7 +15,8 @@ var     gulp = require( 'gulp' ),
       prefix = require( 'gulp-autoprefixer' ),
       svgmin = require( 'gulp-svgmin' ),
     imagemin = require( 'gulp-imagemin' ),
-       clean = require( 'gulp-clean' );
+       clean = require( 'gulp-clean' ),
+ runSequence = require( 'run-sequence' );
 
 // source and distribution folders 
 var  src = 'src/';
@@ -94,13 +95,13 @@ gulp.task( 'minifyImg', function() {
 
 // clean /dist for build task
 gulp.task( 'clean', function() {
-  gulp.src( dist, { read: false } )
+  return gulp.src( dist, { read: false } )
     .pipe( clean() );
 }); 
 
 // build all assets
 gulp.task( 'build', function() {
-  gulp.run( 'embedlr','lint', 'minifyJS', 'json', 'css', 'minifySvg', 'minifyImg' );
+  return gulp.run( 'embedlr','lint', 'minifyJS', 'json', 'css', 'minifySvg', 'minifyImg' );
 });
 
 // watch & liveReload
@@ -135,6 +136,6 @@ gulp.task( 'watch', function() {
 });
 
 // default task
-gulp.task( 'default', function(){
-  gulp.run( 'server', 'watch' );
+gulp.task( 'default', function(callback){
+  runSequence( 'clean', 'build', ['server', 'watch'], callback );
 });
