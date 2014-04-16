@@ -8,6 +8,7 @@
     "url": "https://github.com/markdurrant/experiment-base"
   },
   "devDependencies": {
-    
+    "gulp": "~3.6.0",
+    "gulp-sass": "~0.7.1"
   }
 }
