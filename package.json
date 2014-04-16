@@ -11,6 +11,7 @@
     "gulp": "~3.6.0",
     "gulp-sass": "~0.7.1",
     "gulp-jshint": "~1.5.3",
-    "jshint-stylish": "http://github.com/markdurrant/jshint-stylish/tarball/master"
+    "jshint-stylish": "http://github.com/markdurrant/jshint-stylish/tarball/master",
+    "gulp-util": "~2.2.14"
   }
 }

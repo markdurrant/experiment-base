@@ -1,9 +1,10 @@
 var gulp = require( 'gulp' );
 
 // gulp plugins
-var   sass = require( 'gulp-sass' ),
-    jshint = require( 'gulp-jshint' ),
-   stylish = require( 'jshint-stylish' );
+var gutil = require( 'gulp-util' );
+     sass = require( 'gulp-sass' ),
+   jshint = require( 'gulp-jshint' ),
+  stylish = require( 'jshint-stylish' );
 
 var paths = {
   sass: 'src/sass/**/*.scss',
@@ -18,16 +19,18 @@ gulp.task( 'sass', function() {
   return gulp.src( paths.sass )
     .pipe( sass({
       sourceComments: 'normal',
-      errLogToConsole: true
+      errLogToConsole: true,
+      onError: gutil.beep()
     }))
-    .pipe( gulp.dest( paths.sassOutput ) );
+    .pipe( gulp.dest( paths.sassOutput ) )
 });
 
 // hint JS
 gulp.task( 'jshint', function() {
   return gulp.src( [paths.js, paths.jsVendor] )
     .pipe( jshint() )
-    .pipe( jshint.reporter( stylish ) );
+    .pipe( jshint.reporter( stylish ) )
+    .pipe( jshint.reporter( gutil.beep ) );
 });
 
 // copy JS
