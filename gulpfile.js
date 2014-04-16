@@ -11,7 +11,10 @@ var paths = {
 // sass task
 gulp.task( 'sass', function() {
   return gulp.src( paths.sass )
-    .pipe( sass() )
+    .pipe( sass({
+      sourceComments: 'normal',
+      errLogToConsole: true
+    }))
     .pipe( gulp.dest( paths.sassOutput ) );
 });
 
