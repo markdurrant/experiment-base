@@ -1,22 +1,12 @@
 var gulp = require( 'gulp' );
 
+var connect = require( 'connect' );
+
 // gulp plugins
 var gutil = require( 'gulp-util' );
      sass = require( 'gulp-sass' ),
    jshint = require( 'gulp-jshint' ),
   stylish = require( 'jshint-stylish' );
-
-// var paths = {
-//   sass: 'src/sass/**/*.scss',
-//   sassOutput: 'dist/css/',
-//   js: 'src/js/**/*.js',
-//   jsVendor: '!src/js/vendor/**/*.js',
-//   jsOutput: 'dist/js/'
-// };
-
-function beepy () {
-  gutil.beep();
-}
 
 var paths = {
   sass: {
@@ -35,8 +25,7 @@ gulp.task( 'sass', function() {
   return gulp.src( paths.sass.src )
     .pipe( sass({
       sourceComments: 'normal',
-      errLogToConsole: true,
-      onError: gutil.beep
+      errLogToConsole: true
     }))
     .pipe( gulp.dest( paths.sass.dist ) )
 });
