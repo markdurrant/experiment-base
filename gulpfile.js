@@ -1,6 +1,7 @@
 var gulp = require( 'gulp' );
 
 var connect = require( 'connect' );
+var localhostPort = 4000;
 
 // gulp plugins
 var gutil = require( 'gulp-util' );
@@ -9,6 +10,8 @@ var gutil = require( 'gulp-util' );
   stylish = require( 'jshint-stylish' );
 
 var paths = {
+  src: 'src/',
+  dist: 'dist/',
   sass: {
     src: 'src/sass/**/*.scss',
     dist: 'dist/css/'
@@ -19,6 +22,14 @@ var paths = {
     dist: 'dist/js/'
   }
 };
+
+// start localhost server
+gulp.task( 'server', function() {
+  connect.createServer( 
+    connect.static( paths.dist )
+  ).listen( localhostPort );
+  console.log( "\nlocal server runing @ http://localhost:" + localhostPort + "\n" );
+});
 
 // complie sass
 gulp.task( 'sass', function() {
