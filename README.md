@@ -24,7 +24,7 @@ Run Gulp
 `gulp`
 
 ### todo
-* seperate dev & dist folders. (unminified assets + liveReload) & (minified assets +  no liveReload)
+* seperate dev & dist folders. (unminified assets + liveReload) & (minified assets +  no liveReload) - can use gulp-if for this I think.
 * add in gh-pages export
 * alert(sound) on errors
 * style success/error msgs
