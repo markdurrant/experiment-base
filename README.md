@@ -14,18 +14,7 @@ Install packages
 
 `npm i`
 
-Build assets (only required once)
-
-`gulp build`
-
 Run Gulp
 (Starts local server, LiveReload, SASS compilation, JS hinting & minification, image minification)
 
 `gulp`
-
-### todo
-* seperate dev & dist folders. (unminified assets + liveReload) & (minified assets +  no liveReload)
-* add in gh-pages export
-* alert(sound) on errors
-* style success/error msgs
-* SASS only version?
