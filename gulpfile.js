@@ -1,65 +1,71 @@
-var gulp = require( 'gulp' );
+"use strict";
 
-var connect = require( 'connect' );
-var localhostPort = 4000;
+// Plugins
+var            gulp = require( 'gulp' ),
+            connect = require( 'connect' ),
+  connectLivereload = require( 'connect-livereload' ),
+     gulpLivereload = require( 'gulp-livereload' ),
+               sass = require( 'gulp-sass' ),
+             prefix = require( 'gulp-autoprefixer' ),
+             jshint = require( "gulp-jshint" ),
+            stylish = require( 'jshint-stylish' );
 
-// gulp plugins
-var gutil = require( 'gulp-util' );
-     sass = require( 'gulp-sass' ),
-   jshint = require( 'gulp-jshint' ),
-  stylish = require( 'jshint-stylish' );
-
-var paths = {
-  src: 'src/',
-  dist: 'dist/',
-  sass: {
-    src: 'src/sass/**/*.scss',
-    dist: 'dist/css/'
-  },
-  js: {
-    src: 'src/js/**/*.js',
-    vendor: 'src/js/vendor/**/*.js',
-    dist: 'dist/js/'
-  }
+// paths & files
+var path = {
+        src: 'src/',
+       html: 'src/**/*.html',
+         js: 'src/js/*.js',
+       sass: 'sass/**/*.scss',
+        css: 'src/css/',
 };
 
-// start localhost server
+// ports
+var localPort =  4000,
+       lrPort = 35729;
+
+// start local server
 gulp.task( 'server', function() {
-  connect.createServer( 
-    connect.static( paths.dist )
-  ).listen( localhostPort );
-  console.log( "\nlocal server runing @ http://localhost:" + localhostPort + "\n" );
+  var server = connect();
+
+  server.use( connectLivereload( { port: lrPort } ) );
+  server.use( connect.static( path.src ) );
+  server.listen( localPort );
+
+  console.log( "\nlocal server running at http://localhost:" + localPort + "/\n" );
 });
 
-// complie sass
+// jshint
+gulp.task( 'jshint', function() {
+  gulp.src( path.js )
+    .pipe( jshint() )
+    .pipe( jshint.reporter( stylish ) );
+});
+
+// compile sass
 gulp.task( 'sass', function() {
-  return gulp.src( paths.sass.src )
+  gulp.src( path.sass )
     .pipe( sass({
+      outputStyle: [ 'expanded' ],
       sourceComments: 'normal',
       errLogToConsole: true
     }))
-    .pipe( gulp.dest( paths.sass.dist ) )
+    .pipe( prefix() )
+    .pipe( gulp.dest( path.css ) );
 });
 
-// hint JS
-gulp.task( 'jshint', function() {
-  return gulp.src( [paths.js.src, '!' + paths.js.vendor] )
-    .pipe( jshint() )
-    .pipe( jshint.reporter( stylish ) )
-    .pipe( jshint.reporter( gutil.beep ) );
-});
+// watch file
+gulp.task( 'watch', function(done) {
+  var lrServer = gulpLivereload();
 
-// copy JS
-gulp.task( 'copyJs', function() {
-  return gulp.src( paths.js.src )
-    .pipe( gulp.dest( paths.js,dist ) );
-});
+  gulp.watch( [ path.html, path.js, path.css + '/**/*.css' ] )
+    .on( 'change', function( file ) {
+      lrServer.changed( file.path );
+    });
 
-// watch task
-gulp.task( 'watch', function() {
-  gulp.watch( paths.sass, ['sass'] );
-  gulp.watch( paths.js, ['jshint'] );
+  gulp.watch( path.js, ['jshint'] );
+
+  gulp.watch( path.sass, ['sass'] );
 });
 
 // default task
-gulp.task( 'default', ['watch'] );
+gulp.task( 'default', [ 'server', 'watch' ] );
