@@ -1,141 +1,71 @@
+"use strict";
+
 // Plugins
-var     gulp = require( 'gulp' ),
-       gutil = require( 'gulp-util' ),
-      rename = require( 'gulp-rename' ),
-        path = require( 'path' ),
-     connect = require( 'connect' ),
-          lr = require( 'tiny-lr' ),
-  livereload = require( 'gulp-livereload' ),
-      server = lr(),
-     embedlr = require( "gulp-embedlr" ),
-      jshint = require( "gulp-jshint" ),
-     stylish = require( 'jshint-stylish' );
-      uglify = require( 'gulp-uglify' ),
-        sass = require( 'gulp-sass' ),
-      prefix = require( 'gulp-autoprefixer' ),
-      svgmin = require( 'gulp-svgmin' ),
-    imagemin = require( 'gulp-imagemin' ),
-       clean = require( 'gulp-clean' ),
- runSequence = require( 'run-sequence' );
+var            gulp = require( 'gulp' ),
+            connect = require( 'connect' ),
+  connectLivereload = require( 'connect-livereload' ),
+     gulpLivereload = require( 'gulp-livereload' ),
+               sass = require( 'gulp-sass' ),
+             prefix = require( 'gulp-autoprefixer' ),
+             jshint = require( "gulp-jshint" ),
+            stylish = require( 'jshint-stylish' );
 
-// source and distribution folders 
-var  src = 'src/';
-var dist = path.resolve( 'dist/' );
+// paths & files
+var path = {
+        src: 'src/',
+       html: 'src/**/*.html',
+         js: 'src/js/*.js',
+       sass: 'sass/**/*.scss',
+        css: 'src/css/',
+};
 
-// localhost port
-var LocalPort = 4000;
+// ports
+var localPort =  4000,
+       lrPort = 35729;
 
 // start local server
 gulp.task( 'server', function() {
-  connect.createServer(
-      connect.static( dist )
-  ).listen( LocalPort );
+  var server = connect();
 
-  console.log( "\nlocal server runing at http://localhost:" + LocalPort + "/\n" );
+  server.use( connectLivereload( { port: lrPort } ) );
+  server.use( connect.static( path.src ) );
+  server.listen( localPort );
+
+  console.log( "\nlocal server running at http://localhost:" + localPort + "/\n" );
 });
 
-// add liveReload script
-gulp.task( 'embedlr', function() {
-  gulp.src( src + "*.html" )
-    .pipe( embedlr() )
-    .pipe( gulp.dest( dist ) )
-    .pipe( livereload( server ) );
-});
-
-// JShint
-gulp.task( 'lint', function() {
-  gulp.src( src + 'js/*.js' )
+// jshint
+gulp.task( 'jshint', function() {
+  gulp.src( path.js )
     .pipe( jshint() )
     .pipe( jshint.reporter( stylish ) );
 });
 
-// minify JS
-gulp.task( 'minifyJS', function() {
-  gulp.src( src + 'js/**/*.js' )
-    .pipe( uglify() )
-    .pipe( rename( { ext: '.min.js' } ) )
-    .pipe( gulp.dest( dist + '/js' ) )
-    .pipe( livereload( server ) );
-});
-
-// JSON
-gulp.task( 'json', function() {
-  gulp.src( src + 'data/**/*.json' )
-    .pipe( gulp.dest( dist + '/data' ) )
-    .pipe( livereload( server ) );
-});
-
-// complie sass & add vendor prefixes
-gulp.task( 'css', function() {
-  gulp.src( src + 'sass/*.scss' )
+// compile sass
+gulp.task( 'sass', function() {
+  gulp.src( path.sass )
     .pipe( sass({
-      outputStyle: [ 'compressed' ],
+      outputStyle: [ 'expanded' ],
+      sourceComments: 'normal',
       errLogToConsole: true
     }))
     .pipe( prefix() )
-    .pipe( gulp.dest( dist + '/css' ) )
-    .pipe( livereload( server ) );
+    .pipe( gulp.dest( path.css ) );
 });
 
-// minify SVG
-gulp.task( 'minifySvg', function() {
-  gulp.src( src + 'img/*.svg' )
-    .pipe( svgmin() )
-    .pipe( gulp.dest( dist + '/img' ) )
-    .pipe( livereload( server ) );
-});
+// watch file
+gulp.task( 'watch', function(done) {
+  var lrServer = gulpLivereload();
 
-// minify raster images
-gulp.task( 'minifyImg', function() {
-  gulp.src( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ] )
-    .pipe( imagemin() )
-    .pipe( gulp.dest( dist + '/img' ) )
-    .pipe( livereload( server ) );
-});
-
-// clean /dist for build task
-gulp.task( 'clean', function() {
-  return gulp.src( dist, { read: false } )
-    .pipe( clean() );
-}); 
-
-// build all assets
-gulp.task( 'build', function() {
-  return gulp.run( 'embedlr','lint', 'minifyJS', 'json', 'css', 'minifySvg', 'minifyImg' );
-});
-
-// watch & liveReload
-gulp.task( 'watch', function() {
-  server.listen( 35729, function ( err ) {
-    if ( err ) return console.log( err );
-
-    gulp.watch( src + '*.html', function() {
-      gulp.run( 'embedlr' );
-    });    
-
-    gulp.watch( [ src + 'js/*.js', './gulpfile.js' ], function() {
-      gulp.run( 'lint', 'minifyJS' );
+  gulp.watch( [ path.html, path.js, path.css + '/**/*.css' ] )
+    .on( 'change', function( file ) {
+      lrServer.changed( file.path );
     });
 
-    gulp.watch( src + 'data/*.json', function() {
-      gulp.run( 'json' );
-    });
+  gulp.watch( path.js, ['jshint'] );
 
-    gulp.watch( src + 'sass/*.scss', function() {
-      gulp.run( 'css' );
-    });
-
-    gulp.watch( [ src + 'img/*.png', src + 'img/*.gif', src + 'img/*.jpg' ], function() {
-      gulp.run( 'minifyImg' );
-    });  
-
-    gulp.watch( src + 'img/*.svg', function() {
-      gulp.run( 'minifySvg', 'minifyImg' );
-    });
-  });
+  gulp.watch( path.sass, ['sass'] );
 });
 
 // default task
-gulp.task( 'default', function(callback){
-  runSequence( 'clean', 'build', ['server', 'watch'], callback );
-});
+gulp.task( 'default', [ 'server', 'watch' ] );

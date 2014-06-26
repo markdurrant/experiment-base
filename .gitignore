@@ -12,8 +12,6 @@ logs
 
 npm-debug.log
 /node_modules
-/temp
-/dist
 
 # SublimeText project files
 *.sublime-workspace
