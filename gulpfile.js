@@ -15,7 +15,7 @@ var path = {
         src: 'src/',
        html: 'src/**/*.html',
          js: 'src/js/*.js',
-       sass: 'sass/**/*.scss',
+       sass: 'src/sass/**/*.scss',
         css: 'src/css/',
 };
 
