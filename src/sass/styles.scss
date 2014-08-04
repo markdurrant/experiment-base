@@ -21,7 +21,7 @@ $ink:    black;
 *::before,
 *:after {
   box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
 }
 
 // remove padding & list styles from all <ul> as default
