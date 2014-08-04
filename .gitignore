@@ -36,3 +36,6 @@ Icon
 
 # Sass
 .sass-cache
+
+# Dev CSS
+/src/css/
