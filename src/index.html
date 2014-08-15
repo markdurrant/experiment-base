@@ -4,15 +4,20 @@
   <meta charset="utf-8">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title></title> <!-- ADD A TITLE! -->
-
+  <title>paper.js drawings</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
+  <!-- paper js canvas element -->
+  <canvas id="drawingThree" resize></canvas>
 
-
+  <!-- vendor scripts -->
   <script src="js/vendor/jquery-2.1.1.min.js"></script>
+  <script src="js/vendor/paper-full.js"></script>
+
+  <!-- my scripts -->
   <script src="js/main.js"></script>
+  <script type="text/paperscript" src="js/drawingThree.js" canvas="drawingThree"></script>
 </body>
 </html>
