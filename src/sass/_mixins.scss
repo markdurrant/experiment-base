@@ -1,7 +1,6 @@
 //===============================================================================
 // MIXINS
 //===============================================================================
-
 // CLEAR FIX
 // @include clearfix;
 @mixin clearfix {
@@ -10,14 +9,6 @@
     display: table;
     clear: both;
   }
-}
-
-// APPEARANCE
-// @include apperance;
-@mixin appearance( $value: none ) {
-  -webkit-appearance: $value;
-     -moz-appearance: $value;
-          appearance: $value;
 }
 
 // HIDE TEXT

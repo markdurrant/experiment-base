@@ -36,3 +36,9 @@ Icon
 
 # Sass
 .sass-cache
+
+# Dev CSS
+/src/css/
+
+# Dist folder
+/dist/
