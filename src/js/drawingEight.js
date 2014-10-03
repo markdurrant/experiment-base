@@ -1,8 +1,5 @@
 // page dimensions
-var canvasElm = $( '#drawingSix' ),
-    canvasWidth = canvasElm.width(),
-    canvasHeight = canvasElm.height(),
-    canvasCenter = new Point( canvasWidth / 2, canvasHeight / 2 );
+var canvasElm = document.getElementById( 'drawingSix' );
 
 // colors
 var colors = {
@@ -107,5 +104,5 @@ console.log(
 );
 
 // svg output
-var output = $( '#output' );
-output.text( project.exportSVG({ asString: true }) );
+// var output = $( '#output' );
+// output.text( project.exportSVG({ asString: true }) );
