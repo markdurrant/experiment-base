@@ -44,10 +44,10 @@ gulp.task( 'jshint', function() {
 // compile sass
 gulp.task( 'sass', function() {
   gulp.src( path.sass )
+    .pipe(sass().on('error', sass.logError))
     .pipe( sass({
       outputStyle: [ 'expanded' ],
-      sourceComments: 'normal',
-      errLogToConsole: true
+      sourceComments: 'normal'
     }))
     .pipe( prefix() )
     .pipe( gulp.dest( path.css ) );
