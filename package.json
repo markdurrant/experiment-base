@@ -1,0 +1,17 @@
+{
+  "name": "super-simple-base",
+  "version": "0.0.1",
+  "description": "A super duper simple base for web experiments",
+  "author": "Mark Durrant",
+  "scripts": {
+    "browsersync": "browser-sync start --server 'src/' --files 'src/**/*' --no-notify",
+    "sass": "node-sass --source-comments src/sass/styles.scss -o src/css/",
+    "watch-sass": "nodemon -e scss -x 'yarn sass'",
+    "start": "yarn watch-sass | yarn browsersync"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.17.1"
+  }
+}
