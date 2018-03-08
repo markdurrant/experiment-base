@@ -4,7 +4,7 @@
   "description": "A super duper simple base for web experiments",
   "author": "Mark Durrant",
   "scripts": {
-    "browsersync": "browser-sync start --server 'src/' --files 'src/**/*' --no-notify",
+    "browsersync": "browser-sync start --server 'src/' --files 'src/**/*' --no-notify --port 4000",
     "sass": "node-sass --source-comments src/sass/styles.scss -o src/css/",
     "watch-sass": "nodemon -e scss -x 'yarn sass'",
     "start": "yarn watch-sass | yarn browsersync"
