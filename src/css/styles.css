@@ -338,3 +338,60 @@ template {
 html {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+
+/* line 4, src/sass/styles.scss */
+body {
+  background-color: #f5f5fa; }
+
+/* line 8, src/sass/styles.scss */
+.outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1440px;
+  margin: 0 auto; }
+
+/* line 16, src/sass/styles.scss */
+.header {
+  position: fixed;
+  width: 1440px;
+  height: 72px;
+  background-image: url("../header.png");
+  z-index: 2; }
+
+/* line 24, src/sass/styles.scss */
+.footer {
+  width: 100%;
+  height: 145px;
+  background-image: url("../footer.png"); }
+
+/* line 30, src/sass/styles.scss */
+.main {
+  position: relative;
+  width: 1348px;
+  margin-top: 132px;
+  margin-bottom: 60px; }
+
+/* line 37, src/sass/styles.scss */
+.left {
+  position: absolute;
+  left: 0;
+  width: 337px;
+  height: 1345px;
+  background-image: url("../left.png"); }
+
+/* line 45, src/sass/styles.scss */
+.center {
+  margin-left: 337px;
+  width: 674px;
+  height: 2042px;
+  background-image: url("../center.png"); }
+
+/* line 52, src/sass/styles.scss */
+.right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 337px;
+  height: 1187px;
+  background-image: url("../right.png"); }

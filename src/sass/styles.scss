@@ -1,2 +1,59 @@
 @import 'normalize';
 @import 'base';
+
+body {
+  background-color: #f5f5fa;
+}
+
+.outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  position: fixed;
+  width: 1440px;
+  height: 72px;
+  background-image: url('../header.png');
+  z-index: 2;
+}
+
+.footer {
+  width: 100%;
+  height: 145px;
+  background-image: url('../footer.png');
+}
+
+.main {
+  position: relative;
+  width: 337px * 2 + 674px;
+  margin-top: 60px + 72px;
+  margin-bottom: 60px;
+}
+
+.left {
+  position: absolute;
+  left: 0;
+  width: 337px;
+  height: 1345px;
+  background-image: url('../left.png');
+}
+
+.center {
+  margin-left: 337px;
+  width: 674px;
+  height: 2042px;
+  background-image: url('../center.png');
+}
+
+.right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 337px;
+  height: 1187px;
+  background-image: url('../right.png');
+}
