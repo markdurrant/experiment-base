@@ -1,3 +1,19 @@
+// COLORS
+$gr-10: hsl(0, 0%, 10%);
+$gr-20: hsl(0, 0%, 20%);
+$gr-40: hsl(0, 0%, 40%);
+$gr-60: hsl(0, 0%, 60%);
+$gr-80: hsl(0, 0%, 80%);
+$gr-90: hsl(0, 0%, 90%);
+
+.gr-10 { background-color: $gr-10; }
+.gr-20 { background-color: $gr-20; }
+.gr-40 { background-color: $gr-40; }
+.gr-60 { background-color: $gr-60; }
+.gr-80 { background-color: $gr-80; }
+.gr-90 { background-color: $gr-90; }
+.white { background-color:  white; }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -6,4 +22,31 @@ html {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
                Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: $gr-90;
+  color: $gr-40;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  color: white;
+
+  nav { margin-left: auto; }
+  ul { display: flex; }
+  li { margin-left: 1rem; }
+}
+
+.app-container {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 6rem 1rem;
 }
