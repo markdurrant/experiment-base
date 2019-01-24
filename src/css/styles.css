@@ -338,3 +338,124 @@ template {
 html {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+
+/* line 12, src/sass/styles.scss */
+.gr-10 {
+  background-color: #1a1a1a; }
+
+/* line 13, src/sass/styles.scss */
+.gr-20 {
+  background-color: #333333; }
+
+/* line 14, src/sass/styles.scss */
+.gr-40 {
+  background-color: #666666; }
+
+/* line 15, src/sass/styles.scss */
+.gr-60 {
+  background-color: #999999; }
+
+/* line 16, src/sass/styles.scss */
+.gr-80 {
+  background-color: #cccccc; }
+
+/* line 17, src/sass/styles.scss */
+.gr-90 {
+  background-color: #e6e6e6; }
+
+/* line 18, src/sass/styles.scss */
+.white {
+  background-color: white; }
+
+/* line 20, src/sass/styles.scss */
+html {
+  background-color: #e6e6e6;
+  color: #666666;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased; }
+
+/* line 28, src/sass/styles.scss */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+/* line 34, src/sass/styles.scss */
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  color: white; }
+  /* line 40, src/sass/styles.scss */
+  .app-header nav {
+    margin-left: auto; }
+  /* line 41, src/sass/styles.scss */
+  .app-header ul {
+    display: flex; }
+  /* line 42, src/sass/styles.scss */
+  .app-header li {
+    margin-left: 1rem; }
+
+/* line 45, src/sass/styles.scss */
+.app-container {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 6rem 1rem; }
+
+/* line 51, src/sass/styles.scss */
+.card-outer {
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: max-height .35s ease-in-out; }
+  /* line 57, src/sass/styles.scss */
+  .card-outer.open {
+    max-height: 30rem; }
+  /* line 58, src/sass/styles.scss */
+  .card-outer.closed {
+    max-height: 3.4rem; }
+
+/* line 61, src/sass/styles.scss */
+.card-header {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+  /* line 68, src/sass/styles.scss */
+  .card-header h3 {
+    margin: 0;
+    line-height: 1; }
+
+/* line 74, src/sass/styles.scss */
+.card-item-count {
+  margin-left: auto;
+  margin-right: .5rem; }
+
+/* line 79, src/sass/styles.scss */
+.card-show-hide {
+  position: relative;
+  height: 1rem; }
+  /* line 83, src/sass/styles.scss */
+  .closed .card-show-hide {
+    transform: rotate(180deg); }
+
+/* line 88, src/sass/styles.scss */
+.card-content {
+  padding: 1rem; }
+  /* line 91, src/sass/styles.scss */
+  .card-content ul {
+    display: flex;
+    flex-wrap: wrap; }
+  /* line 96, src/sass/styles.scss */
+  .card-content li {
+    width: 50%; }
+    /* line 99, src/sass/styles.scss */
+    .card-content li:nth-child(odd) {
+      padding-right: .5rem; }
+    /* line 100, src/sass/styles.scss */
+    .card-content li:nth-child(even) {
+      padding-left: .5rem; }
+  /* line 103, src/sass/styles.scss */
+  .card-content p {
+    margin-top: .25rem; }
