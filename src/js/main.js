@@ -9,11 +9,11 @@ let unFixPosition = el => {
   el.setAttribute('style', '');
 };
 
-let left = document.querySelector('.left');
-let right = document.querySelector('.right');
+let left = document.querySelector('.panel-left');
+let right = document.querySelector('.panel-right');
 
 window.addEventListener('scroll', e => {
-  let offset = window.innerHeight - 320;
+  let offset = window.innerHeight - 300;
 
   if (window.scrollY > left.getBoundingClientRect().height - offset) {
     fixPosition(left);
@@ -26,4 +26,10 @@ window.addEventListener('scroll', e => {
   } else  {
     unFixPosition(right);
   }
+});
+
+document.querySelector('.modal').addEventListener('click', () => {
+  document.querySelector('.modal').classList.toggle('closed');
+
+  document.querySelector('body').classList.toggle('modal-open');
 });

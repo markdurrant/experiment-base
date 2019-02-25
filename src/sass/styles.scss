@@ -2,60 +2,122 @@
 @import 'base';
 
 body {
-  // background-color: #f5f5fa;
+
 }
 
-.outer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 1440px;
-  margin: 0 auto;
+.login-page {
+  position: relative;
+  width: #{2880px / 2};
+  height: #{3746px / 2};
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url('../images/homepage---not-logged-in.jpg');
+  background-size: 100%;
+
+  a {
+    display: block;
+    position: absolute;
+    width: 77px;
+    height: 29px;
+    top: 49px;
+    left: 450px;
+    opacity: 0;
+  }
 }
 
 .header {
-  position: fixed;
-  width: 1440px;
-  height: 72px;
-  background-image: url('../header.png');
-  z-index: 2;
-}
+  $width: #{2880px / 2};
+  $height: #{143px / 2};
 
-.footer {
-  width: 100%;
-  height: 109px;
-  background-image: url('../footer.png');
-}
-
-.main {
-  position: relative;
-  width: 337px * 2 + 674px + 8px;
-  margin-top: 60px + 72px;
-  margin-bottom: 60px;
-}
-
-.left {
-  position: absolute;
-  left: 0;
-  width: 337px;
-  height: 1251px;
-  background-image: url('../left.png');
-}
-
-.center {
-  margin-left: 337px;
-  width: 679px;
-  height: 2212px;
-  background-image: url('../center.png');
+  height: $height;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url('../images/header.jpg');
+  background-size: $width $height;
   background-repeat: no-repeat;
-  background-position-y: -4px;
+  background-position: center top;
 }
 
-.right {
+.footer-body {
+
+  text-align: center;
+}
+
+.container {
+  $width: 2880px * .5;
+  $height: 1958px * .5;
+
+  position: relative;
+  width: $width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 264px;
+  background-image: url('../images/footer.jpg');
+  background-repeat: no-repeat;
+  background-size: $width $height;
+  background-position: bottom center;
+}
+
+.panel {
+}
+
+$panel-left: 634px * .5;
+$panel-middle: 1312px * .5;
+$panel-right: 634px * .5;
+$margin: 38px;
+
+.panel-left {
   position: absolute;
-  right: 0;
+  top: 40px;
+  left: $margin;
+  width: $panel-left;
+}
+
+.panel-middle {
+  margin-top: 40px;
+  width: $panel-middle;
+}
+
+.panel-right {
+  position: absolute;
+  top: 40px;
+  left: $panel-left + $panel-middle + $margin * 3;
+  width: $panel-right;
+}
+
+.modal {
+  position: fixed;
   top: 0;
-  width: 338px;
-  height: 1399px;
-  background-image: url('../right.png');
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(black, .5);
+  transition: opacity .25s ease-in-out;
+
+  &.closed {
+    opacity: 0;
+  }
+}
+
+.modal-inner {
+  position: absolute;
+  width: 1574px * .5;
+  height: 1276px * .5;
+  top: 50%;
+  left: 50%;
+  margin-top: - 1276px * .25;
+  margin-left: - 1574px * .25;
+  background-image: url('../images/homepage---upselling-popover.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.close {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
 }
