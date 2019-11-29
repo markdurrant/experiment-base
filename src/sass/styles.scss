@@ -73,14 +73,17 @@ $margin: 38px;
 }
 
 .panel-middle {
+  position: absolute;
   margin-top: 40px;
+  left: $panel-left + $margin * 2;
   width: $panel-middle;
 }
 
 .panel-right {
-  position: absolute;
+  position: relative;
   top: 40px;
-  left: $panel-left + $panel-middle + $margin * 3;
+  left: $panel-middle + $margin * 3;
+  left: calc(50% - #{$panel-right / 2} - 38px);
   width: $panel-right;
 }
 

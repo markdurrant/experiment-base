@@ -1,4 +1,8 @@
 let fixPosition = el => {
+  if (el.getAttribute('style')) {
+    return;
+  }
+
   let x = el.getBoundingClientRect().x;
   let y = el.getBoundingClientRect().y;
 
@@ -10,6 +14,7 @@ let unFixPosition = el => {
 };
 
 let left = document.querySelector('.panel-left');
+let middle = document.querySelector('.panel-middle');
 let right = document.querySelector('.panel-right');
 
 window.addEventListener('scroll', e => {
@@ -21,15 +26,9 @@ window.addEventListener('scroll', e => {
     unFixPosition(left);
   }
 
-  if (window.scrollY > right.getBoundingClientRect().height - offset) {
-    fixPosition(right);
+  if (window.scrollY > middle.getBoundingClientRect().height - offset) {
+    fixPosition(middle);
   } else  {
-    unFixPosition(right);
+    unFixPosition(middle);
   }
-});
-
-document.querySelector('.modal').addEventListener('click', () => {
-  document.querySelector('.modal').classList.toggle('closed');
-
-  document.querySelector('body').classList.toggle('modal-open');
 });

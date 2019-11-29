@@ -393,17 +393,20 @@ html {
 
 /* line 75, src/sass/styles.scss */
 .panel-middle {
+  position: absolute;
   margin-top: 40px;
+  left: 393px;
   width: 656px; }
 
-/* line 80, src/sass/styles.scss */
+/* line 82, src/sass/styles.scss */
 .panel-right {
-  position: absolute;
+  position: relative;
   top: 40px;
-  left: 1087px;
+  left: 770px;
+  left: calc(50% - 158.5px - 38px);
   width: 317px; }
 
-/* line 87, src/sass/styles.scss */
+/* line 90, src/sass/styles.scss */
 .modal {
   position: fixed;
   top: 0;
@@ -412,11 +415,11 @@ html {
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity .25s ease-in-out; }
-  /* line 96, src/sass/styles.scss */
+  /* line 99, src/sass/styles.scss */
   .modal.closed {
     opacity: 0; }
 
-/* line 101, src/sass/styles.scss */
+/* line 104, src/sass/styles.scss */
 .modal-inner {
   position: absolute;
   width: 787px;
@@ -429,7 +432,7 @@ html {
   background-size: 100%;
   background-repeat: no-repeat; }
 
-/* line 114, src/sass/styles.scss */
+/* line 117, src/sass/styles.scss */
 .close {
   display: block;
   position: absolute;
