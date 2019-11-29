@@ -13,7 +13,7 @@ let left = document.querySelector('.panel-left');
 let right = document.querySelector('.panel-right');
 
 window.addEventListener('scroll', e => {
-  let offset = window.innerHeight - 300;
+  let offset = window.innerHeight - 320;
 
   if (window.scrollY > left.getBoundingClientRect().height - offset) {
     fixPosition(left);
