@@ -6,8 +6,8 @@
   "scripts": {
     "browsersync": "browser-sync start --server 'src/' --files 'src/**/*' --no-notify --port 4000",
     "sass": "node-sass --source-comments src/sass/styles.scss -o src/css/",
-    "watch-sass": "nodemon -e scss -x 'yarn sass'",
-    "start": "yarn watch-sass | yarn browsersync"
+    "watch-sass": "nodemon -e scss -x 'npm run sass'",
+    "start": "npm run watch-sass | npm run browsersync"
   },
   "devDependencies": {
     "browser-sync": "^2.23.6",
