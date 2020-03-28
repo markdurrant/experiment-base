@@ -3,11 +3,11 @@ A super super simple base project for web experimentation. Complies Sass for sty
 
 #### Install 
 ```
-$ yarn install  
+$ npm i  
 ```
 
 #### Develop
 Starts [Browsersync](http://browsersync.io/) and watches the Sass for changes. 
 ```
-$ yarn start
+$ npm start
 ```
