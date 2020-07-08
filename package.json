@@ -2,9 +2,6 @@
   "name": "experiments-base",
   "version": "0.0.1",
   "scripts": {
-    "start": "npx browser-sync start --server './' --files '**/*' --port 4000"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.26.7"
+    "start": "browser-sync start --server './' --files '**/*' --port 4000"
   }
 }
