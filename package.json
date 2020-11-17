@@ -2,6 +2,12 @@
   "name": "experiments-base",
   "version": "0.0.1",
   "scripts": {
-    "start": "browser-sync start --server './' --files '**/*' --port 4000"
+    "server": "npx browser-sync start --server --no-ui --no-notify './' --files '**/*' --port 4000",
+    "sass": "npx sass --watch --no-source-map sass/styles.scss css/styles.css",
+    "start": "npm run sass & npm run server"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "sass": "^1.29.0"
   }
 }
