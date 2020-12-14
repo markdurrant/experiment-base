@@ -1,11 +1,132 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
   height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+@font-face {
+  font-family: "Commissioner";
+  font-display: swap;
+  src: url("../fonts/commissioner.woff2") format("woff2");
+}
+html {
+  overflow: hidden;
+}
+
+html,
+body {
+  width: 100vw;
+  line-height: 1.4;
 }
 
 body {
-  padding: 0;
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+section {
+  position: relative;
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+section:nth-child(odd) {
+  background-color: rgba(255, 0, 153, 0.2);
+}
+section:nth-child(even) {
+  background-color: rgba(0, 153, 255, 0.2);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 2rem;
+}
+header div {
+  margin-right: 1rem;
+}
+
+main {
+  width: 100%;
+  max-width: 80%;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 0 2rem 1rem 0;
+}
+
+label {
+  display: block;
+}
+
+input[type=range] {
+  margin: 0.25rem -0.05rem;
+}
+
+.columns p {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+@keyframes animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation-name: animation;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.animation span {
+  position: absolute;
+  font-size: 10rem;
+}
+.animation span:nth-child(1) {
+  transform: translateY(10rem);
+}
+.animation span:nth-child(2) {
+  transform: translateY(-10rem);
+}
+.animation span:nth-child(3) {
+  transform: translateX(10rem);
+}
+.animation span:nth-child(4) {
+  transform: translateX(-10rem);
+}
+
+.variable-fonts {
+  flex-wrap: wrap;
+  line-height: 1;
+  font-variation-settings: "wght" 900, "slnt" 0, "FLAR" 0, "VOLM" 0;
+}
+.variable-fonts span {
+  display: inline-block;
+  font-size: 12rem;
+  font-family: "Commissioner";
 }
