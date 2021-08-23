@@ -9,3 +9,25 @@ html {
 body {
   padding: 0;
 }
+
+html {
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #346;
+}
+
+main {
+  margin: 1rem;
+  max-width: 22rem;
+}
+
+pre {
+  min-height: 2.5rem;
+  margin-top: 0.4rem;
+  padding: 0.4rem 0.8rem 0.3rem;
+  font-family: "Fira Code", monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 0.2rem;
+  background-color: #dde;
+}
