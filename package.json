@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.26.13",
+    "node-hid": "^2.1.1",
     "sass": "^1.29.0"
   }
 }
