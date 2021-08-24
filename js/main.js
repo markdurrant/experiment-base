@@ -11,4 +11,12 @@ device.onMessage = (msg) => {
     });
 };
 
+device.onConnection = (name) => {
+  document.querySelector(
+    "small"
+  ).innerHTML = `Connected device: <b>${name}</b>`;
+};
+
+device.connect();
+
 window.device = device;

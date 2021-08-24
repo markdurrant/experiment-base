@@ -1,13 +1,20 @@
 class MidiDevice {
   constructor(index) {
+    this.connected = false;
     this.midiAccess;
     this.deviceName;
     this.onMessage;
+    this.onConnection;
+  }
 
+  connect() {
     this.midiConectSucess = (midiAccess) => {
       if (midiAccess.inputs.size !== 0) {
+        this.connected = true;
         this.midiAccess = midiAccess;
         this.deviceName = midiAccess.inputs.values().next().value.name;
+
+        if (this.onConnection) this.onConnection(this.deviceName);
         this.listen(midiAccess);
 
         console.log(`MIDI device connected: ${this.deviceName}`);
@@ -36,7 +43,7 @@ class MidiDevice {
   }
 
   send(data) {
-    if (this.midiAccess) {
+    if (this.connected) {
       for (let output of this.midiAccess.outputs.values()) {
         output.send(data);
       }

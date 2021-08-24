@@ -20,6 +20,10 @@ main {
   margin: 1rem;
 }
 
+label {
+  display: block;
+}
+
 .pre-container {
   position: relative;
   max-width: 14rem;
