@@ -20,8 +20,12 @@ main {
   margin: 1rem;
 }
 
-pre {
+.pre-container {
+  position: relative;
   max-width: 14rem;
+}
+
+pre {
   min-height: 2.5rem;
   margin-top: 0.4rem;
   padding: 0.4rem 0.8rem;
@@ -34,4 +38,21 @@ pre {
 
 pre i {
   font-weight: 300;
+}
+
+.status-dot {
+  position: absolute;
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  top: 0.3rem;
+  right: 0.3rem;
+  border-radius: 0.25rem;
+  background-color: #07f;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.status-dot.active {
+  opacity: 1;
 }

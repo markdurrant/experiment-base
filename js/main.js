@@ -1,9 +1,14 @@
-import midi from "./midi.js";
+import MidiDevice from "./midi.js";
 
-midi.connect();
+const device = new MidiDevice();
 
-document.addEventListener("keydown", (e) => {
-  console.log(e);
-});
+device.onMessage = (msg) => {
+  document.querySelector("pre").textContent = msg.data;
+  document
+    .querySelector(".status-dot")
+    .animate([{ opacity: 0 }, { opacity: 1, offset: 0.3 }, { opacity: 0 }], {
+      duration: 750,
+    });
+};
 
-window.midi = midi;
+window.device = device;

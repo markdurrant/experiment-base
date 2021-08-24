@@ -1,38 +1,49 @@
-const midi = {};
+class MidiDevice {
+  constructor(index) {
+    this.midiAccess;
+    this.deviceName;
+    this.onMessage;
 
-// Fire on each midi message
-midi.onMessage = (input) => {
-  document.querySelector("pre").textContent = input.data;
-};
+    this.midiConectSucess = (midiAccess) => {
+      if (midiAccess.inputs.size !== 0) {
+        this.midiAccess = midiAccess;
+        this.deviceName = midiAccess.inputs.values().next().value.name;
+        this.listen(midiAccess);
 
-// Connet to midi device
-midi.connect = () => {
-  const midiConectFailed = () => {
-    console.log("Failed to connect to MIDI device.");
-  };
+        console.log(`MIDI device connected: ${this.deviceName}`);
+      } else {
+        this.midiConectFailed();
+      }
+    };
 
-  const midiConected = (midiAccess) => {
-    if (midiAccess.inputs.size === 0) {
-      midiConectFailed();
+    this.midiConectFailed = () => {
+      console.log("Failed to connect to MIDI device.");
+    };
 
-      return;
+    if (navigator.requestMIDIAccess) {
+      navigator
+        .requestMIDIAccess()
+        .then(this.midiConectSucess, this.midiConectFailed);
+    } else {
+      console.log("Midi through browser not supported");
     }
-
-    console.log(
-      `[${midiAccess.inputs.values().next().value.name}] MIDI device connected.`
-    );
-
-    for (let input of midiAccess.inputs.values()) {
-      input.onmidimessage = midi.onMessage;
-    }
-  };
-
-  // Test for browser midi support, and connect to device if available
-  if (navigator.requestMIDIAccess) {
-    navigator.requestMIDIAccess().then(midiConected, midiConectFailed);
-  } else {
-    console.log("Midi through browser not supported");
   }
-};
 
-export { midi as default };
+  listen() {
+    for (let input of this.midiAccess.inputs.values()) {
+      input.onmidimessage = this.onMessage;
+    }
+  }
+
+  send(data) {
+    if (this.midiAccess) {
+      for (let output of this.midiAccess.outputs.values()) {
+        output.send(data);
+      }
+    } else {
+      console.log("Midi device not connected");
+    }
+  }
+}
+
+export { MidiDevice as default };
