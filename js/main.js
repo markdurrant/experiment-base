@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import MidiDevice from "./midi.js";
 
 const device = new MidiDevice();
@@ -20,3 +21,5 @@ device.onConnection = (name) => {
 device.connect();
 
 window.device = device;
+=======
+>>>>>>> parent of 0fa2153 (Basic MIDI monitoring)
