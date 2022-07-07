@@ -90,6 +90,8 @@ const compileNunjucks = () => {
   }
 
   fs.writeFileSync(output.markup, html);
+
+  console.log(`Compiled ${input.markup} @ ${timeNow()}`);
 };
 
 const copyJs = () => {
@@ -98,6 +100,8 @@ const copyJs = () => {
   fs.rmSync(output.js, { recursive: true, force: true });
 
   copyRecursiveSync(input.js, output.js);
+
+  console.log(`Copied ${input.js} @ ${timeNow()}`);
 };
 
 const copyAssets = () => {
@@ -106,6 +110,27 @@ const copyAssets = () => {
   fs.rmSync(output.assets, { recursive: true, force: true });
 
   copyRecursiveSync(input.assets, output.assets);
+
+  console.log(`Copied ${input.assets} @ ${timeNow()}`);
+};
+
+const build = () => {
+  compileSass();
+  compileNunjucks();
+  copyJs();
+  copyAssets();
+};
+
+const watch = () => {
+  fs.watch("./src/", { recursive: true }, (event, file) => {
+    const root = file.split("/")[0];
+    const ext = file.split(".")[file.split(".").length - 1];
+
+    if (root === "sass" || ext === "scss") compileSass();
+    if (root === "includes" || ext === "njk") compileNunjucks();
+    if (root === "js" || ext === "js") copyJs();
+    if (root === "assets") copyAssets();
+  });
 };
 
 const args = process.argv.slice(2);
@@ -114,3 +139,6 @@ if (args.includes("--sass")) compileSass();
 if (args.includes("--nunjucks")) compileNunjucks();
 if (args.includes("--js")) copyJs();
 if (args.includes("--assets")) copyAssets();
+
+if (args.includes("--build")) build();
+if (args.includes("--watch")) watch();
