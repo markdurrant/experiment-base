@@ -1,4 +1,6 @@
 const fs = require("fs");
+const path = require("path");
+
 const sass = require("sass");
 const nunjucks = require("nunjucks");
 
@@ -7,11 +9,42 @@ const config = JSON.parse(fs.readFileSync("./projectConfig.json"));
 const input = {
   styles: "./src/sass/styles.scss",
   markup: "./src/index.njk",
+  js: "./src/js/",
+  assets: "./src/assets/",
 };
 
 const output = {
   styles: "./dist/css/styles.css",
   markup: "./dist/index.html",
+  js: "./dist/js/",
+  assets: "./dist/assets/",
+};
+
+const createDist = () => {
+  if (!fs.existsSync("./dist/")) fs.mkdirSync("./dist/");
+};
+
+const copyRecursiveSync = (src, dest) => {
+  const isDirectory = (() => {
+    const exists = fs.existsSync(src);
+    const stats = exists && fs.statSync(src);
+
+    return exists && stats.isDirectory();
+  })();
+
+  if (isDirectory) {
+    fs.mkdirSync(dest);
+    fs.readdirSync(src).forEach((item) => {
+      if (item === ".gitkeep") return;
+
+      const rSrc = path.join(src, item);
+      const rDest = path.join(dest, item);
+
+      copyRecursiveSync(rSrc, rDest);
+    });
+  } else {
+    fs.copyFileSync(src, dest);
+  }
 };
 
 const timeNow = () => {
@@ -21,6 +54,8 @@ const timeNow = () => {
 };
 
 const compileSass = () => {
+  createDist();
+
   const cssDir = output.styles.split(".css")[0];
 
   let css;
@@ -41,6 +76,8 @@ const compileSass = () => {
 };
 
 const compileNunjucks = () => {
+  createDist();
+
   let html;
 
   try {
@@ -55,7 +92,25 @@ const compileNunjucks = () => {
   fs.writeFileSync(output.markup, html);
 };
 
+const copyJs = () => {
+  createDist();
+
+  fs.rmSync(output.js, { recursive: true, force: true });
+
+  copyRecursiveSync(input.js, output.js);
+};
+
+const copyAssets = () => {
+  createDist();
+
+  fs.rmSync(output.assets, { recursive: true, force: true });
+
+  copyRecursiveSync(input.assets, output.assets);
+};
+
 const args = process.argv.slice(2);
 
 if (args.includes("--sass")) compileSass();
 if (args.includes("--nunjucks")) compileNunjucks();
+if (args.includes("--js")) copyJs();
+if (args.includes("--assets")) copyAssets();
