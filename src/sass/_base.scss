@@ -1,0 +1,8 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--paper);
+  color: var(--ink);
+}

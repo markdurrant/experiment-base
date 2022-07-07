@@ -1,0 +1,9 @@
+:root {
+  --paper: hsl(0, 0%, 100%);
+  --ink: hsl(210, 10%, 15%);
+
+  @media (prefers-color-scheme: dark) {
+    --paper: hsl(210, 5%, 10%);
+    --ink: hsl(40, 5%, 85%);
+  }
+}
