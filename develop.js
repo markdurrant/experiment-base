@@ -4,6 +4,8 @@ const path = require("path");
 const sass = require("sass");
 const nunjucks = require("nunjucks");
 
+const browserSync = require("browser-sync").create();
+
 const config = JSON.parse(fs.readFileSync("./projectConfig.json"));
 
 const input = {
@@ -78,6 +80,8 @@ const compileSass = () => {
 const compileNunjucks = () => {
   createDist();
 
+  nunjucks.configure({ noCache: true });
+
   let html;
 
   try {
@@ -119,9 +123,13 @@ const build = () => {
   compileNunjucks();
   copyJs();
   copyAssets();
+
+  console.log("./dist/ built");
 };
 
 const watch = () => {
+  console.log("Watching ./src/");
+
   fs.watch("./src/", { recursive: true }, (event, file) => {
     const root = file.split("/")[0];
     const ext = file.split(".")[file.split(".").length - 1];
@@ -133,6 +141,24 @@ const watch = () => {
   });
 };
 
+const serve = () => {
+  browserSync.init({
+    server: "./dist/",
+    files: "./dist/",
+    index: "index.html",
+    port: 4000,
+    ui: false,
+    notify: false,
+    open: false,
+  });
+};
+
+const develop = () => {
+  build();
+  watch();
+  serve();
+};
+
 const args = process.argv.slice(2);
 
 if (args.includes("--sass")) compileSass();
@@ -142,3 +168,6 @@ if (args.includes("--assets")) copyAssets();
 
 if (args.includes("--build")) build();
 if (args.includes("--watch")) watch();
+if (args.includes("--serve")) serve();
+
+if (args.includes("--develop")) develop();
