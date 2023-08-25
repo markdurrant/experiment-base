@@ -1,13 +1,14 @@
 {
   "name": "experiments-base",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "server": "npx browser-sync start --server --no-ui --no-notify --no-open './' --files '**/*' --port 4000",
-    "sass": "npx sass --watch --no-source-map sass/styles.scss css/styles.css",
-    "start": "npm run sass & npm run server"
+    "start": "npm run dev",
+    "dev": "vite --port 4000",
+    "build": "vite build",
+    "preview": "vite preview --port 4000"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.13",
-    "sass": "^1.29.0"
+    "vite": "^4.2.0"
   }
 }

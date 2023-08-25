@@ -1,13 +1,11 @@
 # Experiments base
 
-Super simple base project for frontend expirements.
-
-Compiles [Sass](https://www.npmjs.com/package/sass) & serves files with [Browsersync](https://browsersync.io/). That's it.
+Super simple base project for frontend experiments, using [Vite](http://vitejs.dev/).
 
 **Install:**
 
 ```> npm install```
 
-**Watch Sass & serve files:**
+**Watch & serve files:**
 
 ```> npm start```
