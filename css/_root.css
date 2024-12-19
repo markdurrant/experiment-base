@@ -10,6 +10,7 @@
 
   /* LAYOUT & SIZING */
   --page-margin: 2rem;
+  --flex-gap: 0.5rem;
   --border-radius: 0.4rem;
 
   /* ABSTRACT COLORS */
@@ -58,9 +59,3 @@
   accent-color: var(--accent-color-400);
   color-scheme: dark;
 }
-
-/* Lightmode colors */
-/* @media (prefers-color-scheme: light) {
-  :root {
-  }
-} */

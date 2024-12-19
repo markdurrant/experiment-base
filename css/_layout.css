@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: var(--page-margin);
+}
+
+.fl {
+  display: flex;
+
+  &.fl-wrap {
+    flex-wrap: wrap;
+  }
+
+  &.fl-col {
+    flex-direction: column;
+  }
+
+  &.fl-gap {
+    gap: var(--flex-gap);
+  }
+
+  &.fl-align {
+    align-items: center;
+  }
+
+  &.fl-justify {
+    justify-content: center;
+  }
+}

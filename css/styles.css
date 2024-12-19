@@ -1,15 +1,6 @@
 @import url(./_root.css);
 
+@import url(./_layout.css);
 @import url(./_inline.css);
 @import url(./_block.css);
 @import url(./_forms.css);
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 2rem;
-}
