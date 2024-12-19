@@ -4,8 +4,12 @@ Super simple base project for frontend experiments, using [Vite](http://vitejs.d
 
 **Install:**
 
-```> npm install```
+```
+> yarn
+```
 
-**Watch & serve files:**
+**Development:**
 
-```> npm start```
+```
+> yarn start
+```
