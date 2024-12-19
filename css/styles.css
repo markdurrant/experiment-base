@@ -1,5 +1,9 @@
 @import url(./_root.css);
 
+@import url(./_inline.css);
+@import url(./_block.css);
+@import url(./_forms.css);
+
 *,
 *::before,
 *::after {
@@ -8,16 +12,4 @@
 
 body {
   margin: 2rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol {
-  margin-top: 0;
 }

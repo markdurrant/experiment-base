@@ -1,0 +1,14 @@
+/* Inline tags we care about: <a>, <b>, <i>, <code>, <kbd>, <label>, <img> */
+
+a {
+  color: var(--accent-color-500);
+}
+
+b {
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground-color-500);
+}
+
+label {
+  color: var(--foreground-color-100);
+}

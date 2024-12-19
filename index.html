@@ -20,8 +20,62 @@
     <p>This section serves as the <code>header</code>.</p>
 
   </header>
-  <hr>
 
+  <div class="colors-tester">
+    <style>
+      .colors-tester {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .colors-tester>div {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        color: var(--test-color);
+        padding: .5rem .25rem;
+      }
+
+      .colors-tester>div::before {
+        content: "";
+        display: block;
+        height: 2rem;
+        width: 6rem;
+        background-color: var(--test-color);
+      }
+    </style>
+
+
+    <div style="--test-color: var(--ac-pearl);">--ac-pearl</div>
+    <div style="--test-color: var(--ac-charcoal);">--ac-charcoal</div>
+
+    <div style="--test-color: var(--background-color-000);">--background-color-000</div>
+    <div style="--test-color: var(--background-color-100);">--background-color-100</div>
+    <div style="--test-color: var(--background-color-200);">--background-color-200</div>
+    <div style="--test-color: var(--background-color-300);">--background-color-300</div>
+    <div style="--test-color: var(--background-color-400);">--background-color-400</div>
+    <div style="--test-color: var(--background-color-500);">--background-color-500</div>
+
+
+    <div style="--test-color: var(--foreground-color-000);">--foreground-color-000</div>
+    <div style="--test-color: var(--foreground-color-100);">--foreground-color-100</div>
+    <div style="--test-color: var(--foreground-color-200);">--foreground-color-200</div>
+    <div style="--test-color: var(--foreground-color-300);">--foreground-color-300</div>
+    <div style="--test-color: var(--foreground-color-400);">--foreground-color-400</div>
+    <div style="--test-color: var(--foreground-color-500);">--foreground-color-500</div>
+
+
+    <div style="--test-color: var(--red);">--red</div>
+    <div style="--test-color: var(--green);">--green</div>
+    <div style="--test-color: var(--blue);">--blue</div>
+    <div style="--test-color: var(--cyan);">--cyan</div>
+    <div style="--test-color: var(--magenta);">--magenta</div>
+    <div style="--test-color: var(--yellow);">--yellow</div>
+
+  </div>
+
+  <hr>
 
   <main>
     <section id="headings">
@@ -64,6 +118,7 @@
           </ul>
         </nav>
       </header>
+
       <article>
         <p>This paragraph is nested inside an <code>article</code> element. It contains many different, sometimes
           useful, <a href="https://www.w3schools.com/tags/">HTML5 elements</a>. Of course there are classics like
@@ -459,6 +514,46 @@
         <li>List item four</li>
       </ul>
       <ol>
+        <li>List item one
+          <ol>
+            <li>List item one
+              <ol>
+                <li>List item one</li>
+                <li>List item two</li>
+                <li>List item three</li>
+                <li>List item four</li>
+              </ol>
+            </li>
+            <li>List item two</li>
+            <li>List item three</li>
+            <li>List item four</li>
+          </ol>
+        </li>
+        <li>List item two</li>
+        <li>List item three</li>
+        <li>List item four</li>
+      </ol>
+      <ul class="text-list">
+        <li>Unordered List item one
+          <ul>
+            <li>Nested list item
+              <ul>
+                <li>Level 3, item one</li>
+                <li>Level 3, item two</li>
+                <li>Level 3, item three</li>
+                <li>Level 3, item four</li>
+              </ul>
+            </li>
+            <li>List item two</li>
+            <li>List item three</li>
+            <li>List item four</li>
+          </ul>
+        </li>
+        <li>List item two</li>
+        <li>List item three</li>
+        <li>List item four</li>
+      </ul>
+      <ol class="text-list">
         <li>List item one
           <ol>
             <li>List item one

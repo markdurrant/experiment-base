@@ -1,16 +1,66 @@
 :root {
-  --paper: hsl(0, 0%, 100%);
-  --ink: hsl(210, 10%, 15%);
+  /* TYPOGRAPHY */
+  --font-family: system-ui;
+  --monospace-font-family: monospace;
+  --font-size: 20px; /* For lazy rem math */
+  --font-weight: 200;
+  --font-weight-semibold: 600;
+  --line-height: 1.5;
+  --letter-spacing: 0.066em;
 
+  /* LAYOUT & SIZING */
+  --page-margin: 2rem;
+  --border-radius: 0.4rem;
+
+  /* ABSTRACT COLORS */
+  --charcoal: hsl(220, 100%, 5%);
+  --pearl: hsl(224, 28%, 88%);
+  --hornet: hsl(52, 100%, 48%);
+
+  --red: #f00;
+  --green: #0f0;
+  --blue: #00f;
+  --cyan: #0ff;
+  --magenta: #f0f;
+  --yellow: #ff0;
+
+  /* SEMANTIC COLOURS */
+  --background-color-000: black;
+  --background-color-100: var(--charcoal);
+  --background-color-200: color-mix(in srgb, var(--charcoal), var(--pearl) 5%);
+  --background-color-300: color-mix(in srgb, var(--charcoal), var(--pearl) 10%);
+  --background-color-400: color-mix(in srgb, var(--charcoal), var(--pearl) 15%);
+  --background-color-500: color-mix(in srgb, var(--charcoal), var(--pearl) 20%);
+
+  --foreground-color-000: color-mix(in srgb, var(--pearl), var(--charcoal) 48%);
+  --foreground-color-100: color-mix(in srgb, var(--pearl), var(--charcoal) 36%);
+  --foreground-color-200: color-mix(in srgb, var(--pearl), var(--charcoal) 24%);
+  --foreground-color-300: color-mix(in srgb, var(--pearl), var(--charcoal) 12%);
+  --foreground-color-400: var(--pearl);
+  --foreground-color-500: white;
+
+  --accent-color-000: color-mix(in srgb, var(--hornet), var(--charcoal) 48%);
+  --accent-color-100: color-mix(in srgb, var(--hornet), var(--charcoal) 36%);
+  --accent-color-200: color-mix(in srgb, var(--hornet), var(--charcoal) 24%);
+  --accent-color-300: color-mix(in srgb, var(--hornet), var(--charcoal) 12%);
+  --accent-color-400: var(--hornet);
+  --accent-color-500: color-mix(in srgb, var(--hornet), white 50%);
+
+  /* <html> styles */
   height: 100%;
-  font-family: -apple-system, sans-serif;
-  background-color: var(--paper);
-  color: var(--ink);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
+  background-color: var(--background-color-100);
+  color: var(--foreground-color-400);
+  accent-color: var(--accent-color-400);
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Lightmode colors */
+/* @media (prefers-color-scheme: light) {
   :root {
-    --paper: hsl(210, 5%, 10%);
-    --ink: hsl(40, 5%, 85%);
   }
-}
+} */
