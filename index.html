@@ -14,66 +14,80 @@
   <h1>Experiments base</h1>
 
   <style>
-    .layout-tester {
-      border: 1px solid green;
-      margin: 2rem;
-      min-height: 8rem;
+    .test-outer {
+      display: flex;
+      background-color: var(--background-color-100);
+      padding: var(--flex-gap);
     }
 
-    .layout-tester div[class]>div {
-      width: 3rem;
-      height: 3rem;
+    .text-inner {
+      padding: .33em .66em;
+      line-height: 1.2;
+      font-weight: 900;
+      border-radius: var(--border-radius);
+      color: var(--background-color-100);
 
-      &:nth-child(1) {
+      &.sml {
+        font-size: 1rem;
+      }
+
+      &.mid {
+        font-size: 1.5rem;
+      }
+
+      &.lrg {
+        font-size: 3rem;
+      }
+
+      &.red {
         background-color: var(--red);
       }
 
-      &:nth-child(2) {
+      &.green {
         background-color: var(--green);
       }
 
-      &:nth-child(3) {
+      &.blue {
         background-color: var(--blue);
       }
 
-      &:nth-child(4) {
+      &.cyan {
         background-color: var(--cyan);
       }
 
-      &:nth-child(5) {
+      &.magenta {
         background-color: var(--magenta);
       }
 
-      &:nth-child(6) {
+      &.yellow {
         background-color: var(--yellow);
       }
     }
   </style>
 
-  <section class="layout-tester">
-    <div class="fl">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+  <script type="module">
+    import { getSeededRNG } from './js/utils/seededRandom';
 
+    const RNG = getSeededRNG();
 
-  </section>
-  <section class="layout-tester">
+    const numbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+    const sizes = ['sml', 'mid', 'lrg'];
+    const colors = ['red', 'green', 'blue', 'cyan', 'magenta', 'yellow'];
 
-    <div class="fl fl-col">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    const randomItem = arr => arr[Math.floor(RNG() * arr.length)];
 
-  </section>
+    document.addEventListener("DOMContentLoaded", () => {
+      const testOuter = document.querySelector('.test-outer');
+
+      for (let i = 0; i < 8; i++) {
+        const classes = `text-inner test-${numbers[i]} ${randomItem(sizes)} ${randomItem(colors)}`;
+
+        testOuter.innerHTML += `<div class="${classes}">Tester ${numbers[i]}</div>`;
+      }
+    });
+  </script>
+
+  <div class="test-outer fl fl-wrap fl-gap fl-algn-srt"></div>
 
   <script type="module" src="./js/main.js"></script>
 </body>

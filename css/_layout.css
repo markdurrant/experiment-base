@@ -23,11 +23,27 @@ body {
     gap: var(--flex-gap);
   }
 
-  &.fl-align {
+  &.fl-algn-cnt {
     align-items: center;
   }
 
-  &.fl-justify {
+  &.fl-algn-srt {
+    align-items: start;
+  }
+
+  &.fl-algn-end {
+    align-items: end;
+  }
+
+  &.fl-jst-cnt {
     justify-content: center;
+  }
+
+  &.fl-jst-srt {
+    justify-content: start;
+  }
+
+  &.fl-jst-end {
+    justify-content: end;
   }
 }
