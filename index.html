@@ -26,6 +26,7 @@
       font-weight: 900;
       border-radius: var(--border-radius);
       color: var(--background-color-100);
+      animation: 555ms alternate infinite pulse paused linear;
 
       &.sml {
         font-size: 1rem;
@@ -63,6 +64,20 @@
         background-color: var(--yellow);
       }
     }
+
+    .active {
+      animation-play-state: running;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: .33;
+      }
+    }
   </style>
 
   <script type="module">
@@ -88,6 +103,8 @@
   </script>
 
   <div class="test-outer fl fl-wrap fl-gap fl-algn-srt"></div>
+
+  <div class="text-inner test-nine red large">Tester Nine</div>
 
   <script type="module" src="./js/main.js"></script>
 </body>
