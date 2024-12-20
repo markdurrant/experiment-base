@@ -1,7 +1,6 @@
-import { HTML_ELEMENT_GETTER_KEYS, HTML_ELEMENT_SETTER_KEYS } from "./consts";
-
 type Selector = string;
 
+// Quality of life improvemetns
 const _lItemMethods = {
   toggleClass: function (className: string) {
     this.element.classList.toggle(className);
@@ -26,46 +25,44 @@ const _lItemMethods = {
   },
 };
 
-const allKeys = new Set([
-  ...HTML_ELEMENT_GETTER_KEYS,
-  ...HTML_ELEMENT_SETTER_KEYS,
-]);
+// Make a 'Proxy' for the element.
+// We can add new methods with `_lItemMethods`
+// Any prop not part of `_lItemMethods` will be passed on to the element
+const _lItem = (element: Node) => {
+  const handler = {
+    get(target, prop) {
+      if (prop in target) {
+        return target[prop]; // Return the property from the primary object if it exists
+      }
 
-const _lItemElementProps = Array.from(allKeys).reduce((acc, key) => {
-  const hasGet = HTML_ELEMENT_GETTER_KEYS.includes(key);
-  const hasSet = HTML_ELEMENT_SETTER_KEYS.includes(key);
+      if (prop in element) {
+        return element[prop]; // Fallback to the other object
+      }
 
-  acc[key] = { enumerable: true };
+      return element;
+    },
+  };
 
-  if (hasGet)
-    acc[key].get = function () {
-      return this.element[key];
-    };
-
-  if (hasSet)
-    acc[key].set = function (value) {
-      this.element[key] = value;
-    };
-
-  return acc;
-}, {});
-
-const _lItemFromElement = (element: Element) => {
-  const _lItem = { element, ..._lItemMethods };
-
-  Object.defineProperties(_lItem, _lItemElementProps);
-
-  return _lItem;
+  return new Proxy(_lItemMethods, handler);
 };
 
-export const _l = (selector: Selector) => {
-  const nodeList = document.querySelectorAll(selector);
-
-  if (nodeList.length === 1) return _lItemFromElement(nodeList[0]);
-
+// Crrate alist of `_lItems`
+export const _lList = (nodeList: NodeList) => {
   const _list = Array.from(nodeList).map((element) => {
-    return _lItemFromElement(element);
+    return _lItem(element);
   });
 
   return _list;
+};
+
+// Get all elements for a selector and transform into 'Proxys'
+export const _l = (selector: Selector) => {
+  const nodeList = document.querySelectorAll(selector);
+
+  // No matches
+  if (nodeList.length === 0) return null;
+  // single match, single `_lItem` returned
+  if (nodeList.length === 1) return _lItem(nodeList[0]);
+  // More than one match, return `_lList`
+  if (nodeList.length > 1) return _lList(nodeList);
 };
