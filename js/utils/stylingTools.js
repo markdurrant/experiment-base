@@ -1,3 +1,17 @@
+import { _j } from "./DomHook";
+
+let gridOverlay;
+
+export const toggleGridOverlay = () => {
+  if (!gridOverlay) {
+    gridOverlay = _j(".grid-overlay");
+  }
+
+  gridOverlay.toggleClass("active");
+};
+
+window.toggleGridOverlay = toggleGridOverlay;
+
 // Take And array of rgb values and convert to hex
 function rgbToHex(rgbArray) {
   const hex = rgbArray

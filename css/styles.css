@@ -4,3 +4,28 @@
 @import url(./_inline.css);
 @import url(./_block.css);
 @import url(./_forms.css);
+
+/* TODO: Move this somewhere else.
+/* Maybe wait until there are other styling 'dev' tools */
+.grid-overlay {
+  --grid-size: 4rem;
+  --overlay-color: color-mix(in srgb, red 20%, transparent);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  background: repeating-conic-gradient(
+      var(--overlay-color) 0% 25%,
+      transparent 0% 50%
+    )
+    50% / var(--grid-size) var(--grid-size);
+
+  &.active {
+    opacity: 1;
+  }
+}
