@@ -41,13 +41,11 @@ const _lItem = (element: Node): _lItem => {
   const handler = {
     get(target, prop) {
       if (prop in target) {
-        return target[prop]; // Return the property from the primary object if it exists
+        return target[prop];
       }
-
       if (prop in element) {
-        return element[prop]; // Fallback to the other object
+        return element[prop];
       }
-
       return element;
     },
   };
@@ -55,7 +53,7 @@ const _lItem = (element: Node): _lItem => {
   return new Proxy(_lItemMethods, handler);
 };
 
-// Crrate alist of `_lItems`
+// Create alist of `_lItems`
 export const _lList = (nodeList: NodeList) => {
   const _llist = {
     items: Array.from(nodeList).map((element) => {
