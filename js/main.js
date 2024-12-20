@@ -1,5 +1,15 @@
-// import { _l } from "./littleEl";
+import { _l } from "./littleEl";
 
-// const html = _l("html");
-// const body = _l("body");
-// const header = _l("h1");
+document.addEventListener("DOMContentLoaded", () => {
+  const greenies = _l(".green");
+  const ten = _l(".test-ten");
+  const elevenses = _l(".eleven");
+
+  const myLists = {
+    greenies,
+    ten,
+    elevenses,
+  };
+
+  window.myLists = myLists;
+});
