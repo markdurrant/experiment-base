@@ -2,6 +2,8 @@ import { HTML_ELEMENT_ALL_KEYS } from "./HTMLElementKeys";
 
 type Selector = string;
 
+const domParser = new DOMParser();
+
 // Quality of life methods that get a lot of use
 const extraMethods = {
   toggleClass: function (className: string) {
@@ -93,6 +95,14 @@ const _jItem = (node) => {
   }
 
   return _jitem;
+};
+
+// Provide a string and get a DOM hook
+export const _jFromTemplate = (template) => {
+  const HTMLDoc = domParser.parseFromString(template, "text/html");
+  const element = HTMLDoc.body.firstChild;
+
+  return _jItem(element);
 };
 
 // Get a nodelist from selector
