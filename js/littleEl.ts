@@ -1,4 +1,5 @@
 type Selector = string;
+type _lItem = object;
 
 // Quality of life improvemetns
 const _lItemMethods = {
@@ -25,10 +26,18 @@ const _lItemMethods = {
   },
 };
 
+const _lListMethods = {
+  each: function (fn) {
+    this.items.forEach((item, i) => {
+      fn(item, i);
+    });
+  },
+};
+
 // Make a 'Proxy' for the element.
 // We can add new methods with `_lItemMethods`
 // Any prop not part of `_lItemMethods` will be passed on to the element
-const _lItem = (element: Node) => {
+const _lItem = (element: Node): _lItem => {
   const handler = {
     get(target, prop) {
       if (prop in target) {
@@ -48,11 +57,24 @@ const _lItem = (element: Node) => {
 
 // Crrate alist of `_lItems`
 export const _lList = (nodeList: NodeList) => {
-  const _list = Array.from(nodeList).map((element) => {
-    return _lItem(element);
-  });
+  const _llist = {
+    items: Array.from(nodeList).map((element) => {
+      return _lItem(element);
+    }),
+    ..._lListMethods,
+  };
 
-  return _list;
+  const itemMethods = Object.keys(_lItemMethods).reduce((acc, key) => {
+    acc[key] = function (...args) {
+      _llist.each((item) => {
+        item[key](...args);
+      });
+    };
+
+    return acc;
+  }, {});
+
+  return { ..._llist, ...itemMethods };
 };
 
 // Get all elements for a selector and transform into 'Proxys'
