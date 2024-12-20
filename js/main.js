@@ -1,4 +1,4 @@
-import { _j } from "./DomHook";
+import { _j } from "./utils/DomHook";
 
 const dummyClasses = [
   "sml",
