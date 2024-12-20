@@ -6,37 +6,39 @@ const _jGroup = (nodeList) => {
   return nodeList.map((node) => _jItem(node));
 };
 
+const getPropConfig = function (prop, propTypes) {
+  const get = propTypes.includes("get") && {
+    get() {
+      return this.node[prop];
+    },
+  };
+
+  const set = propTypes.includes("get") && {
+    set(value) {
+      this.node[prop] = value;
+    },
+  };
+
+  const method = propTypes.includes("method") && {
+    value: function (...args) {
+      return this.node[prop](...args);
+    },
+  };
+
+  return {
+    ...get,
+    ...set,
+    ...method,
+    enumerable: true,
+  };
+};
+
 const _jItem = (node) => {
   const _jitem = { node };
 
   for (const prop in HTML_ELEMENT_ALL_KEYS) {
     const propTypes = HTML_ELEMENT_ALL_KEYS[prop];
-
-    const hasGet = propTypes.includes("get");
-    const hasSet = propTypes.includes("set");
-    const hasMethod = propTypes.includes("method");
-
-    _jitem[prop] = {};
-
-    const propConfig = {};
-
-    if (hasGet) {
-      propConfig.get = function () {
-        return this.node[prop];
-      };
-    }
-
-    if (hasSet) {
-      propConfig.set = function (value) {
-        this.node[prop] = value;
-      };
-    }
-
-    if (hasMethod) {
-      _jitem[prop] = function (...args) {
-        this.node[prop](...args);
-      };
-    }
+    const propConfig = getPropConfig(prop, propTypes);
 
     Object.defineProperty(_jitem, prop, propConfig);
   }
