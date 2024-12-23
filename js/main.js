@@ -1,26 +1,21 @@
-import { _j } from "./utils/DomHook";
-import { DomLog } from "./utils/DomLog";
+import { Component } from "./components/Component";
 
-const dummyClasses = [
-  "sml",
-  "mid",
-  "lrg",
-  "red",
-  "green",
-  "blue",
-  "cyan",
-  "magenta",
-  "yellow",
-];
-
-document.addEventListener("DOMContentLoaded", () => {
-  const DOMGroups = dummyClasses.map((cls) => {
-    return _j(`.${cls}`);
-  });
-
-  const logThis = new DomLog({});
-
-  logThis.log({ a: "hello" });
-
-  window.DOMGroups = DOMGroups;
+const SimpleButton = new Component({
+  name: "simple-button",
+  state: {
+    text: "My Simple Button",
+    color: "red",
+  },
+  template: (state) => `<button>${state.text}</button>`,
+  styleTemplate: (state) => `button { background-color: ${state.color}; }`,
 });
+
+const mySimpleButton1 = new SimpleButton();
+const mySimpleButton2 = new SimpleButton();
+
+document.body.appendChild(mySimpleButton1);
+document.body.appendChild(mySimpleButton2);
+
+mySimpleButton2.state.text = "Simple Two";
+
+window.mySimpleButton2 = mySimpleButton2;
