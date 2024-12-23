@@ -29,7 +29,12 @@ export const parseCssColor = (cssColorStr) => {
 
   tmpDiv.style.color = cssColorStr;
 
-  const rgb = getComputedStyle(tmpDiv).color.match(/[\d]+/g).map(Number);
+  const compColor = getComputedStyle(tmpDiv).color;
+  const isSrgb = compColor.includes("srgb");
+
+  const rgb = isSrgb
+    ? compColor.match(/[\d.]+/g).map((n) => Math.floor(Number(n) * 255))
+    : compColor.match(/[\d]+/g).map(Number);
 
   tmpDiv.remove();
 
@@ -98,9 +103,12 @@ export const getRootColors = () => {
 
   const rootColors = onlyColors(withValues);
 
-  return rootColors.map((rule) => {
-    rule.value = parseCssColor(rule.value);
+  return rootColors.reduce((acc, color) => {
+    acc[color.jsKey] = {
+      customProp: color.cssPropStr,
+      value: parseCssColor(color.value),
+    };
 
-    return rule;
-  });
+    return acc;
+  }, {});
 };

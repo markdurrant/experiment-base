@@ -20,5 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const rooty = getRootColors();
 
+  console.log(rooty);
+
   window.DOMGroups = DOMGroups;
 });
