@@ -1,5 +1,5 @@
 import { _j } from "./utils/DomHook";
-import { getRootColors } from "./utils/stylingTools";
+import { DomLog } from "./utils/DomLog";
 
 const dummyClasses = [
   "sml",
@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return _j(`.${cls}`);
   });
 
-  const rooty = getRootColors();
+  const logThis = new DomLog({});
 
-  console.log(rooty);
+  logThis.log({ a: "hello" });
 
   window.DOMGroups = DOMGroups;
 });

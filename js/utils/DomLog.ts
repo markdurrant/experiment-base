@@ -18,5 +18,9 @@ export class DomLog {
     this.parent.appendChild(this.pre.node);
   }
 
-  log(value) {}
+  log(value) {
+    const v = valueTemplate(JSON.stringify(value), "");
+
+    this.pre.innerHTML += v;
+  }
 }
