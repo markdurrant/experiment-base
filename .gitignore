@@ -1,1 +1,12 @@
-node_modules
+# Cruft
+.DS_Store
+
+# Reference
+reference/
+
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/

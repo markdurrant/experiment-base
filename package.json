@@ -3,10 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "vite --port 4000",
-    "build": "vite build",
-    "preview": "vite preview --port 4000"
+    "start": "vite"
   },
   "devDependencies": {
     "vite": "^4.2.0"
